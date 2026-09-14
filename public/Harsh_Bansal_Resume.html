@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Bansal - Python Developer Resume</title>
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+            --text-dark: #1f2937;
+            --text-light: #4b5563;
+            --bg-sidebar: #f0fdf4;
+            --bg-main: #ffffff;
+            --accent-color: #0d9488;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e5e7eb;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px 10px;
+        }
+
+        /* Floating Download Button */
+        .download-container {
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            background: var(--primary-gradient);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(13, 148, 136, 0.3);
+        }
+
+        /* Resume Page Layout (A4/Letter proportions) */
+        .resume-wrapper {
+            width: 210mm;
+            min-height: 297mm;
+            background: var(--bg-main);
+            display: grid;
+            grid-template-columns: 32% 68%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Sidebar Section */
+        .sidebar {
+            background-color: var(--bg-sidebar);
+            padding: 40px 25px;
+            border-right: 1px solid #e5e7eb;
+        }
+
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            padding: 40px 30px;
+        }
+
+        /* Gradient Headings */
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .main-content h2 {
+            font-size: 1.25rem;
+            border-bottom: 2px solid #0d9488;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            margin-top: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            border-bottom: 2px solid #0d9488;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0f766e;
+        }
+
+        /* Header Info */
+        .profile-header {
+            margin-bottom: 30px;
+        }
+
+        .profile-header h1 {
+            font-size: 2rem;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+
+        .profile-header p.title {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* Contact Details */
+        .contact-list, .skills-list, .cert-list {
+            list-style: none;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .contact-list li {
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+
+        .skills-list li {
+            background: #ffffff;
+            margin-bottom: 8px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            border-left: 3px solid #0d9488;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        /* Experience & Projects Styling */
+        .item {
+            margin-bottom: 20px;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .item-subtitle {
+            font-size: 0.85rem;
+            color: #0d9488;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item ul {
+            padding-left: 18px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .item ul li {
+            margin-bottom: 4px;
+        }
+
+        .cert-list li {
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Print Optimization */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .download-container {
+                display: none;
+            }
+            .resume-wrapper {
+                box-shadow: none;
+                width: 100%;
+                border-radius: 0;
+            }
+        @media (max-width: 850px) {
+            body { padding: 10px 5px; }
+            .resume-wrapper {
+                width: 100%;
+                min-width: unset;
+                display: flex;
+                flex-direction: column;
+            }
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                padding: 30px 20px;
+            }
+            .main-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+
+
+
+    <!-- Download Trigger Button -->
+    <div class="download-container">
+        <button class="download-btn" onclick="downloadResume()">📥 Download Resume as HTML</button>
+    </div>
+
+    <!-- Resume Document -->
+    <div class="resume-wrapper" id="resumeToDownload">
+        
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-section">
+                <h3>Contact</h3>
+                <ul class="contact-list">
+                    <li>📞 +91 8595783978</li>
+                    <li>📍 Delhi, India</li>
+                    <li>✉️ harshbansal1145@gmail.com</li>
+                    <li>🔗 <a href="https://www.linkedin.com/in/harsh-bansal-5952bzxc798/" target="_blank" style="color: #0f766e; text-decoration: none; font-weight: 600;">LinkedIn Profile</a></li>
+                    <li>💻 <a href="https://github.com/HARSHBANSAL2007" target="_blank" style="color: #0f766e; text-decoration: none; font-weight: 600;">GitHub Portfolio</a></li>
+                    <li>💬 Discord: duniya_ka_papa.</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Core Skills</h3>
+                <ul class="skills-list">
+                    <li>Python &amp; AI Development</li>
+                    <li>JavaScript, HTML, CSS</li>
+                    <li>C &amp; C++ Programming</li>
+                    <li>LangChain &amp; Gen AI Agents</li>
+                    <li>SQL &amp; Database Management</li>
+                    <li>n8n Workflow Automation</li>
+                    <li>Data Structures &amp; Algorithms (DSA)</li>
+                    <li>PHP &amp; Web Scripting</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>Certifications</h3>
+                <ul class="cert-list">
+                    <li>🏆 Gen AI &amp; Agentic AI Certification</li>
+                    <li>🏆 C/C++ CodeSmart Bootcamp</li>
+                    <li>🏆 Ministry of HRM Certificate</li>
+                    <li>🏆 Narcotics Control Bureau Certification</li>
+                    <li>🏆 Be10x AI Productivity Workshop</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <div class="main-content">
+            <div class="profile-header">
+                <h1 class="gradient-text">Harsh Bansal</h1>
+                <p class="title">Python &amp; AI Developer | BCA Student</p>
+            </div>
+
+            <div class="profile-section">
+                <h2 class="gradient-text">Professional Summary</h2>
+                <p style="font-size: 0.95rem; color: var(--text-light);">
+                    Detail-oriented and innovation-driven BCA student at IPU Delhi with a solid foundation in Python, AI frameworks, and full-stack development. Adept at building custom AI agents, automated multi-purpose workflows using n8n, and scalable applications. Passionate about leveraging cutting-edge technologies to solve complex computational challenges.
+                </p>
+            </div>
+
+            <div class="profile-section">
+                <h2 class="gradient-text">Projects &amp; Innovations</h2>
+                
+                <div class="item">
+                    <div class="item-title">Multi-Purpose AI Model Workflow Framework <span style="font-size: 0.8rem; color:#d97706;">(In Progress)</span></div>
+                    <div class="item-subtitle">Tech Stack: n8n, Python, AI APIs</div>
+                    <ul>
+                        <li>Architecting an automation framework utilizing n8n to connect and run multi-purpose AI inference models seamlessly.</li>
+                        <li>Designed automated data pipelines to streamline context sharing across different LLM endpoints.</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">Advanced Autonomous AI Agents Suite</div>
+                    <div class="item-subtitle">Tech Stack: Python, LangChain, OCR, EDA tools</div>
+                    <ul>
+                        <li>Developed specialized AI agents capable of automated presentation (PPT) generation, resume parsing, and financial data analysis.</li>
+                        <li>Integrated OCR extraction modules to digitize and process unstructured text documents efficiently.</li>
+                        <li>Performed Exploratory Data Analysis (EDA) pipelines programmatically via AI agent prompts.</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">BMW Showroom Management System</div>
+                    <div class="item-subtitle">Tech Stack: Python, Database Integration</div>
+                    <ul>
+                        <li>Engineered a backend application simulating car inventory, customer interaction workflows, and sales tracking.</li>
+                        <li>Optimized data transaction logs and query handling speed using efficient programming patterns.</li>
+                    </ul>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">Interactive Personal Portfolio Website</div>
+                    <div class="item-subtitle">Tech Stack: HTML, CSS, JavaScript</div>
+                    <ul>
+                        <li>Built a fully responsive, modern portfolio interface to exhibit software engineering projects and technical certifications.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2 class="gradient-text">Education</h2>
+                
+                <div class="item" style="margin-bottom: 10px;">
+                    <div class="item-title">Bachelor of Computer Applications (BCA)</div>
+                    <div class="item-subtitle">Guru Gobind Singh Indraprastha University (IPU), Delhi | Present</div>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">Focusing on core software architecture, data structures, and advanced programming.</p>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">Higher Secondary Education (12th Grade - Commerce)</div>
+                    <div class="item-subtitle">Vivekanand School, Anand Vihar | Scored: 81%</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JavaScript for Download Functionality -->
+    <script type="">
+        function downloadResume() {
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Harsh_Bansal_Resume.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
