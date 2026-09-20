@@ -113,7 +113,7 @@ export default function HeroPhase1({ onOpenContact }) {
               <Code2 className="h-3.5 w-3.5" />
               <span>[ CORE STACK ]</span>
             </div>
-            <span className="hidden font-mono text-[9px] uppercase tracking-widest text-steel/60 sm:inline">
+            <span className="hidden font-mono text-[9px] uppercase tracking-widest text-steel sm:inline">
               {primaryTechStack.length} skills · tap for detail
             </span>
           </div>
@@ -156,7 +156,7 @@ export default function HeroPhase1({ onOpenContact }) {
                       className={
                         isGoldCore
                           ? "font-mono text-[8px] uppercase tracking-wider text-amber-400/80 group-hover:text-amber-200 transition-colors"
-                          : "font-mono text-[8px] uppercase tracking-wider text-steel/60"
+                          : "font-mono text-[8px] uppercase tracking-wider text-steel"
                       }
                     >
                       {tech.category}
@@ -177,7 +177,7 @@ export default function HeroPhase1({ onOpenContact }) {
                     className={
                       isGoldCore
                         ? "font-mono text-[8px] text-amber-200/70 group-hover:text-amber-200 mt-1 truncate transition-colors"
-                        : "font-mono text-[8px] text-steel/70 mt-1 truncate"
+                        : "font-mono text-[8px] text-steel mt-1 truncate"
                     }
                   >
                     {tech.tag}
@@ -297,9 +297,11 @@ export default function HeroPhase1({ onOpenContact }) {
 
           <div className="mt-5 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             <div className="lg:col-span-8">
-              <h3 className="text-xl sm:text-2xl font-black uppercase tracking-tight text-white group-hover:text-sky-400 transition-colors">
+              {/* h2, not h3: this is the first heading after the page h1, and
+                  skipping a level breaks the document outline for screen readers. */}
+              <h2 className="text-xl font-black uppercase tracking-tight text-white transition-colors group-hover:text-sky-400 sm:text-2xl">
                 {inProgressProject.title}
-              </h3>
+              </h2>
               <p className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-bone/80">
                 {inProgressProject.headline}
               </p>
@@ -322,7 +324,7 @@ export default function HeroPhase1({ onOpenContact }) {
 
             {/* Visual Telemetry Radar Card */}
             <div className="lg:col-span-4 rounded-2xl border border-line/60 bg-void/90 p-4 font-mono text-[10px] text-steel flex flex-col justify-between gap-3 shadow-inner">
-              <div className="flex items-center justify-between border-b border-line/30 pb-2 text-[9px] uppercase tracking-[0.2em] text-steel/70">
+              <div className="flex items-center justify-between border-b border-line/30 pb-2 text-[9px] uppercase tracking-[0.2em] text-steel">
                 <span>WHAT IT DOES</span>
                 <span className="font-bold text-sky-400">IN PROGRESS</span>
               </div>

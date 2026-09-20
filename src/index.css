@@ -67,6 +67,24 @@
   animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
+/* Keyboard focus. The browser default ring is near-black, which is invisible
+   against this theme, and :focus-visible keeps it off mouse clicks. */
+:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+  border-radius: 4px;
+  /* Elements using `transition-all` otherwise fade the ring in over 300ms.
+     A focus indicator has to appear the moment focus lands. */
+  transition-property: none;
+}
+
+/* The custom cursor hides the pointer, so keyboard users rely on this entirely. */
+.custom-cursor-active :focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.25);
+}
+
 /* Hide the native cursor only where the custom one actually renders.
    CustomCursor bails out under reduced-motion, so the second query gives the
    real cursor back — otherwise those visitors get no pointer at all. */

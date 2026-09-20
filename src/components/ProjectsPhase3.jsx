@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
+import useDialog from "../hooks/useDialog";
 import { portfolioData } from "../data/portfolioData";
 import { ArrowUpRight, Terminal as TerminalIcon, GraduationCap, Lock } from "lucide-react";
 import { GithubIcon } from "./SocialIcons";
@@ -6,15 +7,8 @@ import { GithubIcon } from "./SocialIcons";
 export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
   const [activeModalProject, setActiveModalProject] = useState(null);
 
-  // Escape closes the project detail modal.
-  useEffect(() => {
-    if (!activeModalProject) return;
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") setActiveModalProject(null);
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [activeModalProject]);
+  const closeProject = useCallback(() => setActiveModalProject(null), []);
+  const dialogRef = useDialog(Boolean(activeModalProject), closeProject);
   const [cliInput, setCliInput] = useState("");
   const [cliOutput, setCliOutput] = useState([
     { type: "system", text: "HARSH BANSAL // INTERACTIVE CLI" },
@@ -375,18 +369,27 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
       {/* 4. Project Detail Modal */}
       {activeModalProject && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-void/85 backdrop-blur-2xl animate-in fade-in duration-200">
-          <div className="w-full max-w-2xl rounded-3xl border border-line bg-void p-7 sm:p-9 shadow-2xl relative">
+          <div
+            ref={dialogRef}
+            tabIndex={-1}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="project-modal-title"
+            className="relative w-full max-w-2xl rounded-3xl border border-line bg-void p-7 shadow-2xl sm:p-9"
+          >
             <button
+              type="button"
               onClick={() => setActiveModalProject(null)}
-              className="absolute top-6 right-6 font-mono text-xs text-steel hover:text-white border border-line rounded-full h-8 w-8 grid place-items-center"
+              aria-label="Close"
+              className="absolute right-6 top-6 grid h-8 w-8 place-items-center rounded-full border border-line font-mono text-xs text-steel hover:text-white"
             >
-              ✕
+              <span aria-hidden="true">✕</span>
             </button>
 
             <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-sky-400 mb-2">
               PROJECT ARTIFACT // {activeModalProject.order}
             </div>
-            <h3 className="text-2xl font-black uppercase text-white">
+            <h3 id="project-modal-title" className="text-2xl font-black uppercase text-white">
               {activeModalProject.title}
             </h3>
             <p className="mt-1 font-mono text-xs text-steel">

@@ -1,23 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
+import useDialog from "../hooks/useDialog";
 import { Printer, Download, ExternalLink, X } from "lucide-react";
 
 export default function ResumeModal({ isOpen, onClose }) {
   const iframeRef = useRef(null);
 
-  // Escape closes, and the page behind the modal shouldn't scroll.
-  useEffect(() => {
-    if (!isOpen) return;
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [isOpen, onClose]);
+  const dialogRef = useDialog(isOpen, onClose);
 
   if (!isOpen) return null;
 
@@ -32,7 +20,14 @@ export default function ResumeModal({ isOpen, onClose }) {
 
   return (
     <div className="fixed inset-0 z-[120] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-void/90 backdrop-blur-2xl">
-      <div className="relative w-full max-w-5xl h-[94vh] bg-[#f8fafc] text-[#1f2937] rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6)] overflow-hidden flex flex-col border border-line">
+      <div
+        ref={dialogRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Harsh Bansal resume"
+        className="relative flex h-[94vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-line bg-[#f8fafc] text-[#1f2937] shadow-[0_25px_60px_rgba(0,0,0,0.6)]"
+      >
         
         {/* Top Control Bar */}
         <div className="bg-[#060913] text-white px-5 sm:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3 shrink-0 border-b border-line/80">

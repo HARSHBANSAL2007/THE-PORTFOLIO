@@ -304,7 +304,7 @@ export default function BackgroundCanvas() {
   }, []);
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       {/* Background canvas rendering 3D Quantum Core and flame flakes */}
       <canvas ref={canvasRef} className="absolute inset-0 h-full w-full opacity-95" />
 

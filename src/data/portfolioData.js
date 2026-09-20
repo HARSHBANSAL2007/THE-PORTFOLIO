@@ -68,14 +68,6 @@ export const portfolioData = {
     repo: null,
   },
 
-  // Facts anyone can check on this page.
-  metrics: [
-    { label: "CORE LANGUAGES", value: "5", sub: "Python, JS, C, C++, PHP" },
-    { label: "PROJECTS BUILT", value: "4", sub: "1 in progress" },
-    { label: "CERTIFICATIONS", value: "5", sub: "Gen AI, C/C++, more" },
-    { label: "BCA @ IPU DELHI", value: "2023", sub: "Currently enrolled" },
-  ],
-
   projects: [
     {
       id: "kpp-sih",
