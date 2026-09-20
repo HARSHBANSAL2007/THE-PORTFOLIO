@@ -1,19 +1,37 @@
+/**
+ * SINGLE SOURCE OF TRUTH — portfolio content.
+ *
+ * Ground rule for this file: every claim here must be defensible in an
+ * interview. No invented counts, no performance numbers that were never
+ * measured, no credential codes that don't exist. Skill levels use the four
+ * tiers defined in SKILL_LEVELS below and nothing else.
+ */
+
+// Four honest tiers, used everywhere. `bar` drives the strength meter so the
+// UI never has to guess a width from a label.
+export const SKILL_LEVELS = {
+  primary: { label: "Primary", bar: 92, note: "Daily driver — I reach for this first" },
+  proficient: { label: "Proficient", bar: 76, note: "Shipped working projects with it" },
+  working: { label: "Working", bar: 58, note: "Used in coursework and side builds" },
+  foundational: { label: "Foundational", bar: 38, note: "Fundamentals solid, still growing" },
+};
+
 export const portfolioData = {
   identity: {
     name: "Harsh Bansal",
     moniker: "HARSH // DEV_CORE",
     role: "Python & Agentic AI Developer",
     educationBrief: "BCA Student @ IPU Delhi",
-    bio: "Detail-oriented and innovation-driven developer building custom autonomous AI agents, automated multi-model pipelines via n8n, and high-performance computational systems.",
+    bio: "BCA student at IPU Delhi building AI agents in Python — document parsing, automated analysis, and multi-model workflows wired together in n8n. I like problems where the hard part is the plumbing.",
     location: "Delhi, India",
     coordinates: "LAT 28.6139° N // LON 77.2090° E",
-    statusBadge: "GATEWAY SECURE · AUTONOMOUS AI & SYSTEMS ENG",
+    statusBadge: "OPEN TO INTERNSHIPS · PYTHON & AGENTIC AI",
     heroHeading: {
       line1: "ARCHITECTING SYSTEMS.",
       line2: "ENGINEERING INTELLIGENCE.",
-      italicAccent: "REFUSING THE ORDINARY."
+      italicAccent: "REFUSING THE ORDINARY.",
     },
-    heroTag: "[ HARSH BANSAL // AUTONOMOUS AI ARCHITECTURE ]",
+    heroTag: "[ HARSH BANSAL // PYTHON & AGENTIC AI DEVELOPER ]",
   },
 
   contacts: {
@@ -25,33 +43,36 @@ export const portfolioData = {
     discordHandle: "duniya_ka_papa.",
   },
 
-  // Highlighted Core Tech Stack Pills matching user's exact 8 core skills
+  // The 8 core skills exactly as they appear on the resume.
   primaryTechStack: [
-    { name: "Python & AI Development", category: "Core AI", tag: "LLMs & Neural Pipelines", icon: "PY" },
-    { name: "JavaScript, HTML, CSS", category: "Frontend", tag: "Modern Reactive UI", icon: "WEB" },
-    { name: "C & C++ Programming", category: "Systems", tag: "Memory & CodeSmart Certified", icon: "C++" },
-    { name: "LangChain & Gen AI Agents", category: "Agentic AI", tag: "Autonomous Execution", icon: "AI" },
-    { name: "SQL & Database Management", category: "Database", tag: "MySQL & Relational Models", icon: "SQL" },
-    { name: "n8n Workflow Automation", category: "Automation", tag: "Multi-Model Event Pipes", icon: "N8N" },
-    { name: "Data Structures & Algorithms (DSA)", category: "Logic", tag: "Algorithmic Problem Solving", icon: "DSA" },
-    { name: "PHP & Web Scripting", category: "Backend", tag: "Server APIs & Microservices", icon: "PHP" },
+    { name: "Python & AI Development", category: "Core", tag: "Agents, parsing, analysis", icon: "PY" },
+    { name: "LangChain & Gen AI Agents", category: "Agentic AI", tag: "Tool calling & chains", icon: "AI" },
+    { name: "n8n Workflow Automation", category: "Automation", tag: "Multi-model pipelines", icon: "N8N" },
+    { name: "JavaScript, HTML, CSS", category: "Frontend", tag: "This site, hand-built", icon: "WEB" },
+    { name: "SQL & Database Management", category: "Data", tag: "MySQL schema & queries", icon: "SQL" },
+    { name: "C & C++ Programming", category: "Systems", tag: "CodeSmart Bootcamp", icon: "C++" },
+    { name: "Data Structures & Algorithms", category: "Fundamentals", tag: "BCA core coursework", icon: "DSA" },
+    { name: "PHP & Web Scripting", category: "Backend", tag: "Server-side scripting", icon: "PHP" },
   ],
 
   inProgressProject: {
-    tag: "ACTIVE PIPELINE · IN PROGRESS",
+    tag: "IN PROGRESS",
     title: "Multi-Purpose AI Model Workflow Framework",
-    stack: ["n8n", "Python", "AI APIs", "LangChain", "Vector Context"],
-    headline: "Unified Multi-Model Inference & Context Orchestration",
-    blurb: "Architecting a sovereign automation framework utilizing n8n and Python microservices to orchestrate multi-purpose AI inference models. Features automated contextual pipelines, dynamic failovers, and streaming across heterogeneous LLM endpoints.",
-    metrics: ["Multi-LLM Routing", "Real-Time Pipeline", "Zero Latency Drift"],
-    link: "#projects"
+    stack: ["n8n", "Python", "AI APIs", "LangChain"],
+    headline: "One pipeline, many models",
+    blurb:
+      "An n8n-based framework that routes a request to whichever AI model suits it, then keeps context consistent as the job moves between them. The interesting part isn't the models — it's passing state cleanly across steps that each want a different input shape.",
+    // What I'm actually building, not benchmark claims.
+    metrics: ["Prompt routing", "Context hand-off", "Retry on failure"],
+    link: "#projects",
   },
 
+  // Facts anyone can check on this page.
   metrics: [
-    { label: "AI AGENTS FORGED", value: "12+", sub: "Autonomous Workflows" },
-    { label: "MODELS ORCHESTRATED", value: "8+", sub: "LLMs & Vision APIs" },
-    { label: "CORE SKILLS MASTERED", value: "24+", sub: "Web, AI & Systems" },
-    { label: "CAMPUS SECTOR", value: "IPU", sub: "Delhi Tech Division" },
+    { label: "CORE LANGUAGES", value: "5", sub: "Python, JS, C, C++, PHP" },
+    { label: "PROJECTS BUILT", value: "4", sub: "1 in progress" },
+    { label: "CERTIFICATIONS", value: "5", sub: "Gen AI, C/C++, more" },
+    { label: "BCA @ IPU DELHI", value: "2023", sub: "Currently enrolled" },
   ],
 
   projects: [
@@ -61,125 +82,130 @@ export const portfolioData = {
       title: "Multi-Purpose AI Model Workflow",
       status: "IN PROGRESS",
       genre: "Orchestration & Automation",
-      tagline: "Unify disparate LLM endpoints into a unified reactive stream.",
-      blurb: "Architecting an enterprise automation framework utilizing n8n to connect and execute multi-purpose AI inference models seamlessly. Designed automated data pipelines to streamline context sharing across different LLM endpoints.",
-      stack: ["n8n", "Python", "AI APIs", "JSON Pipelines", "Docker"],
+      tagline: "Route one request across many models without losing context.",
+      blurb:
+        "An automation framework built in n8n that connects several AI inference models behind one entry point. Handles the data pipeline between them so context survives the hand-off from one model to the next.",
+      stack: ["n8n", "Python", "AI APIs", "JSON Pipelines"],
       hue: 220,
       highlight: true,
       features: [
-        "Dynamic prompt routing between fast and deep reasoning models",
-        "Automated state persistence across multi-step execution graphs",
-        "Self-healing node execution with automated retry fallbacks"
-      ]
+        "Routes prompts to a fast or a deeper model depending on the request",
+        "Carries state across multi-step runs instead of re-sending everything",
+        "Retries a failed node rather than dropping the whole workflow",
+      ],
     },
     {
       id: "agentic-suite",
       order: "02",
-      title: "Advanced Autonomous AI Agents Suite",
-      status: "PRODUCTION",
+      title: "Autonomous AI Agents Suite",
+      status: "BUILT",
       genre: "Agentic AI & Document Intelligence",
-      tagline: "Autonomous multi-agent execution for presentations, parsing, and EDA.",
-      blurb: "Developed specialized AI agents capable of automated presentation (PPT) generation, structured resume parsing, and financial data analysis. Integrated OCR extraction modules to digitize unstructured text documents with programmatic Exploratory Data Analysis.",
-      stack: ["Python", "LangChain", "OCR Modules", "EDA Automation", "Pandas"],
+      tagline: "Agents that generate decks, read documents, and analyse data.",
+      blurb:
+        "A set of Python agents built on LangChain: one drafts PowerPoint decks, one parses resumes into structured fields, and one runs exploratory analysis on financial data. OCR feeds the parsing agent so scanned documents work too.",
+      stack: ["Python", "LangChain", "OCR", "Pandas"],
       hue: 200,
       highlight: false,
       features: [
-        "Zero-shot automated PowerPoint deck synthesis from raw research",
-        "High-accuracy OCR parsing pipeline for unformatted documents",
-        "Autonomous EDA chart generator powered by LLM agent prompts"
-      ]
+        "Generates a PowerPoint deck from raw notes or research text",
+        "OCR pipeline that turns scanned documents into parseable text",
+        "Runs EDA on a dataset and reports what it found, driven by prompts",
+      ],
     },
     {
       id: "bmw-management",
       order: "03",
       title: "BMW Showroom Management System",
-      status: "VERIFIED",
-      genre: "Enterprise Systems & Databases",
-      tagline: "High-throughput dealership backend with optimized SQL transactions.",
-      blurb: "Engineered a robust backend application simulating car inventory, customer interaction workflows, and real-time sales tracking. Optimized data transaction logs and query handling speed using efficient algorithmic database programming patterns.",
-      stack: ["Python", "MySQL / SQL", "Relational DB", "Query Optimization"],
+      status: "BUILT",
+      genre: "Backend & Databases",
+      tagline: "Dealership backend — inventory, customers, and sales.",
+      blurb:
+        "A Python backend simulating a car dealership: vehicle inventory, customer records, and sales tracking on a MySQL schema. Built to get relational modelling right — foreign keys, joins, and transactions that don't leave the data half-written.",
+      stack: ["Python", "MySQL", "Relational Design"],
       hue: 240,
       highlight: false,
       features: [
-        "ACID-compliant inventory transactions with role-based access",
-        "Automated customer quote generation and lead tracking engine",
-        "Sub-millisecond index search on multi-tier vehicle catalogues"
-      ]
+        "Normalised schema across vehicles, customers, and sales records",
+        "Transactional writes so a failed sale doesn't corrupt inventory",
+        "Indexed lookups over the vehicle catalogue",
+      ],
     },
     {
       id: "monar-portfolio",
       order: "04",
-      title: "Interactive Cyber Gateway & Portfolio",
-      status: "DEPLOYED",
-      genre: "Tactical Web Experience",
-      tagline: "Brutalist cybernetic personal dossier engineered for performance.",
-      blurb: "Forged a high-performance personal web platform directly inspired by brutalist cyber-gaming interfaces. Incorporates live canvas electric plasma fields, real-time node telemetry, and interactive resume printing.",
-      stack: ["HTML5", "CSS3", "JavaScript", "React 19", "Tailwind CSS"],
+      title: "This Portfolio",
+      status: "LIVE",
+      genre: "Frontend Engineering",
+      tagline: "React, Tailwind, and a canvas that renders a rotating icosahedron.",
+      blurb:
+        "Built from scratch in React and Tailwind on Vite. The background is a hand-written 2D canvas renderer: an icosahedron projected into 2D with its own rotation and perspective maths, plus a drifting particle field, all on one animation loop.",
+      stack: ["React 18", "Tailwind CSS", "Vite", "Canvas 2D", "JavaScript"],
       hue: 210,
       highlight: false,
       features: [
-        "Interactive 3D particle and geometric prism canvas backdrop with navy shading",
-        "Integrated ATS resume generator with 1-click print protocol",
-        "Custom reactive magnetic telemetry cursor and electric blue HUD"
-      ]
-    }
+        "3D icosahedron projected to 2D by hand — no three.js, no WebGL",
+        "Custom cursor that tracks position with eased interpolation",
+        "Respects reduced-motion settings and pauses when the tab is hidden",
+      ],
+    },
   ],
 
-  // COMPREHENSIVE SKILLS REPERTOIRE (Excluding removed screenshot items)
+  /**
+   * Skills, grouped so no category looks empty next to the others.
+   * Every entry maps to a SKILL_LEVELS key.
+   */
   skillsGrouped: [
     {
-      category: "01 // WEB STACK & PROGRAMMING LANGUAGES",
-      badge: "CORE STACK",
+      category: "01 // LANGUAGES",
+      badge: "LANGUAGES",
       items: [
-        { name: "HTML5 Semantic Markup", level: "Expert", desc: "Accessible DOM structure, SEO fundamentals, modern audio/video, and clean markup hierarchy" },
-        { name: "Modern CSS3 & Styling", level: "Advanced", desc: "Flexbox, CSS Grid, custom keyframe animations, glassmorphism, and responsive mobile-first layouts" },
-        { name: "JavaScript (ES6+)", level: "Advanced", desc: "Asynchronous async/await, closures, event-driven architecture, and reactive UI manipulation" },
-        { name: "PHP & Web Scripting", level: "Versatile", desc: "Server-side scripting, dynamic templating, form validation, and backend endpoint generation" },
-        { name: "MySQL & Relational SQL", level: "Advanced", desc: "Schema design, joins, foreign keys, stored procedures, and transactional integrity" },
-        { name: "Python 3.x", level: "Primary", desc: "Advanced OOP, asynchronous event loops, computational data processing, and microservice APIs" },
-        { name: "C Programming", level: "Core", desc: "Low-level memory pointer manipulation, struct allocation, and computational algorithms" },
-        { name: "C++ Programming", level: "Core", desc: "Object-oriented design, Standard Template Library (STL), CodeSmart Bootcamp Certified" }
-      ]
+        { name: "Python 3", level: "primary", desc: "Main language. OOP, file and data handling, API calls, and the agent work below." },
+        { name: "JavaScript (ES6+)", level: "proficient", desc: "async/await, DOM and canvas APIs, React components. This site is the working example." },
+        { name: "C", level: "working", desc: "Pointers, structs, manual memory, and the algorithm exercises that come with it." },
+        { name: "C++", level: "working", desc: "Classes, STL containers, and the CodeSmart Bootcamp curriculum." },
+        { name: "PHP", level: "foundational", desc: "Server-side scripting, form handling, and generating pages from a database." },
+      ],
     },
     {
-      category: "02 // AGENTIC AI & LLM ORCHESTRATION",
-      badge: "AI ADVANTAGE",
+      category: "02 // AI & AUTOMATION",
+      badge: "AI & AUTOMATION",
       items: [
-        { name: "Python & AI Development", level: "Expert", desc: "Core engine for AI model inference pipelines, vector search, and autonomous workflows" },
-        { name: "LangChain Framework", level: "Advanced", desc: "Agentic tool calling, memory buffers, dynamic routing chains, and document loaders" },
-        { name: "n8n Workflow Automation", level: "Specialist", desc: "Complex event-driven multi-model orchestration, webhook pipelines, and error handling" },
-        { name: "Multi-Model LLM Routing", level: "Advanced", desc: "Seamless context handoffs and prompt routing between heterogeneous LLM endpoints" },
-        { name: "Document OCR Extraction", level: "Proficient", desc: "Optical Character Recognition pipeline to digitize and parse unstructured documents" },
-        { name: "Exploratory Data Analysis (EDA)", level: "Proficient", desc: "Programmatic data analysis, statistical metrics, and visual distribution scripts" },
-        { name: "Automated Presentation (PPT) Gen", level: "Advanced", desc: "AI-driven PowerPoint deck synthesis from structured and unstructured input sources" },
-        { name: "Prompt Engineering & Context", level: "Expert", desc: "Few-shot prompting, system instructions, role constraints, and context tokens" }
-      ]
+        { name: "LangChain", level: "proficient", desc: "Chains, tool calling, and document loaders — the framework behind the agents suite." },
+        { name: "n8n Workflow Automation", level: "proficient", desc: "Event-driven workflows, webhooks, and error handling across multi-step runs." },
+        { name: "Prompt Engineering", level: "proficient", desc: "System instructions, few-shot examples, and keeping output in a shape code can parse." },
+        { name: "LLM APIs & Multi-Model Routing", level: "working", desc: "Calling different model endpoints and passing context between them." },
+        { name: "Document OCR & Parsing", level: "working", desc: "Turning scanned and unstructured documents into structured, queryable fields." },
+      ],
     },
     {
-      category: "03 // DATA STRUCTURES & DATABASES",
-      badge: "INFRASTRUCTURE",
+      category: "03 // WEB & INTERFACE",
+      badge: "WEB & INTERFACE",
       items: [
-        { name: "Data Structures & Algorithms (DSA)", level: "Core", desc: "Arrays, linked lists, stacks, queues, trees, graphs, sorting, searching, and DP" },
-        { name: "MySQL Database Management", level: "Advanced", desc: "Relational database schema modeling, table relationships, and transaction safety" }
-      ]
+        { name: "HTML5", level: "proficient", desc: "Semantic structure, accessible markup, and forms that work without JavaScript." },
+        { name: "CSS3", level: "proficient", desc: "Flexbox, Grid, keyframe animation, and mobile-first responsive layouts." },
+        { name: "React", level: "proficient", desc: "Components, hooks, and state. Built this site in React 18 on Vite." },
+        { name: "Tailwind CSS", level: "working", desc: "Utility-first styling with a custom theme — the palette and shadows on this page." },
+      ],
     },
     {
-      category: "04 // SYSTEMS & PRODUCTIVITY SUITE",
-      badge: "ECOSYSTEM",
+      category: "04 // DATA & FOUNDATIONS",
+      badge: "DATA & FOUNDATIONS",
       items: [
-        { name: "RESTful APIs & Webhooks", level: "Standard", desc: "Stateless HTTP protocols, OAuth 2.0 security, JSON request/response handling" },
-        { name: "Be10x AI Productivity Suite", level: "Certified", desc: "Rapid prototyping, AI-augmented developer workflows, and tool synergy" },
-        { name: "Computational Problem Solving", level: "Core", desc: "Analytical problem-solving foundation developed through commerce math and BCA studies" }
-      ]
-    }
+        { name: "MySQL & SQL", level: "proficient", desc: "Schema design, joins, foreign keys, and transactions. Backbone of the showroom project." },
+        { name: "Data Structures & Algorithms", level: "working", desc: "Arrays, linked lists, stacks, queues, trees, graphs, sorting, searching, and DP." },
+        { name: "Pandas & EDA", level: "working", desc: "Loading, cleaning, and summarising datasets; the analysis half of the agents suite." },
+        { name: "REST APIs & Webhooks", level: "working", desc: "HTTP verbs, JSON payloads, auth headers, and receiving callbacks from services." },
+      ],
+    },
   ],
 
+  // No invented authorisation codes. Issuer is what it is; add dates when handy.
   certifications: [
-    { title: "Gen AI & Agentic AI Certification", issuer: "Industry Credential", code: "AUTH_GENAI_2026", status: "VERIFIED" },
-    { title: "C/C++ CodeSmart Bootcamp", issuer: "Technical Intensive", code: "AUTH_CSMART_CPP", status: "VERIFIED" },
-    { title: "Ministry of HRM Certificate", issuer: "Govt of India", code: "AUTH_MHRD_GOV", status: "VERIFIED" },
-    { title: "Narcotics Control Bureau Certification", issuer: "NCB National Protocol", code: "AUTH_NCB_SEC", status: "VERIFIED" },
-    { title: "Be10x AI Productivity Workshop", issuer: "AI Masterclass", code: "AUTH_BE10X_AI", status: "VERIFIED" }
+    { title: "Gen AI & Agentic AI Certification", issuer: "Certification programme" },
+    { title: "C/C++ CodeSmart Bootcamp", issuer: "CodeSmart" },
+    { title: "Be10x AI Productivity Workshop", issuer: "Be10x" },
+    { title: "Ministry of HRM Certificate", issuer: "Government of India" },
+    { title: "Narcotics Control Bureau Certification", issuer: "Narcotics Control Bureau" },
   ],
 
   education: [
@@ -187,16 +213,15 @@ export const portfolioData = {
       degree: "Bachelor of Computer Applications (BCA)",
       institution: "Guru Gobind Singh Indraprastha University (IPU), Delhi",
       period: "2023 — Present",
-      status: "CURRENT ENROLLMENT",
-      details: "Focusing on core software engineering, data structures, algorithmic design, and advanced programming paradigms."
+      status: "CURRENTLY ENROLLED",
+      details: "Core software engineering, data structures, algorithms, and database systems.",
     },
     {
-      degree: "Higher Secondary Education (12th Grade - Commerce)",
+      degree: "Senior Secondary (Class 12, Commerce)",
       institution: "Vivekanand School, Anand Vihar, Delhi",
       period: "Completed",
-      status: "81% HONORS",
-      details: "Strong foundations in analytical problem solving, business economics, and mathematics."
-    }
-  ]
+      status: "81%",
+      details: "Commerce stream with mathematics.",
+    },
+  ],
 };
-

@@ -1,17 +1,16 @@
 import React, { useState } from "react";
 import { portfolioData } from "../data/portfolioData";
-import { ArrowUpRight, ExternalLink, Sparkles, CheckCircle2, Terminal as TerminalIcon, GraduationCap, Code2, Send } from "lucide-react";
-import { GithubIcon } from "./SocialIcons";
+import { ArrowUpRight, Terminal as TerminalIcon, GraduationCap } from "lucide-react";
 
 export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
   const [activeModalProject, setActiveModalProject] = useState(null);
   const [cliInput, setCliInput] = useState("");
   const [cliOutput, setCliOutput] = useState([
-    { type: "system", text: "HARSH BANSAL QUANTUM CLI // v2.6.0" },
+    { type: "system", text: "HARSH BANSAL // INTERACTIVE CLI" },
     { type: "system", text: "Type 'help' or click quick commands below to interact." },
   ]);
 
-  const { projects, education, identity, contacts } = portfolioData;
+  const { projects, education, contacts } = portfolioData;
 
   const handleCommand = (cmd) => {
     const cleanCmd = cmd.trim().toLowerCase();

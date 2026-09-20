@@ -1,15 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { portfolioData } from "../data/portfolioData";
 import { X, Mail, Phone, Copy, Check, Send, Terminal } from "lucide-react";
 import { GithubIcon, LinkedinIcon, DiscordIcon } from "./SocialIcons";
 
 export default function ContactModal({ isOpen, onClose }) {
-  if (!isOpen) return null;
-
+  // Hooks run unconditionally; the early return lives below them.
   const [copied, setCopied] = useState("");
   const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const { contacts } = portfolioData;
+
+  // Escape closes the modal, and the page behind it shouldn't scroll.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
 
   const handleCopy = (val, key) => {
     navigator.clipboard.writeText(val);
@@ -17,13 +33,21 @@ export default function ContactModal({ isOpen, onClose }) {
     setTimeout(() => setCopied(""), 2000);
   };
 
+  /**
+   * There's no backend behind this site, so the form hands the message to the
+   * visitor's own mail client pre-filled. That actually reaches the inbox —
+   * the previous version showed a success message and sent nothing at all.
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
+    const subject = `Portfolio enquiry from ${form.name}`;
+    const body = `${form.message}\n\n—\n${form.name}\n${form.email}`;
+    window.location.href =
+      `mailto:${contacts.email}` +
+      `?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
     setSent(true);
-    setTimeout(() => {
-      setSent(false);
-      onClose();
-    }, 2500);
+    setTimeout(() => setSent(false), 4000);
   };
 
   return (
@@ -41,7 +65,7 @@ export default function ContactModal({ isOpen, onClose }) {
         {/* Header */}
         <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.3em] text-sky-400 mb-2">
           <Terminal className="h-3.5 w-3.5" />
-          <span>[ DISPATCH GATEWAY // DIRECT COMMS ]</span>
+          <span>[ GET IN TOUCH ]</span>
         </div>
         <h3 className="text-2xl font-black uppercase text-white">
           Initiate Transmission
@@ -167,14 +191,14 @@ export default function ContactModal({ isOpen, onClose }) {
 
           <div>
             <label className="block font-mono text-[9px] uppercase tracking-wider text-steel/70 mb-1">
-              Dispatch Payload (Message)
+              Message
             </label>
             <textarea
               required
               rows={3}
               value={form.message}
               onChange={(e) => setForm({ ...form, message: e.target.value })}
-              placeholder="State project scope, timeline, or engineering inquiry..."
+              placeholder="Role, project, or question…"
               className="w-full rounded-xl border border-line bg-void px-3.5 py-2 font-mono text-xs text-bone placeholder:text-steel/40 focus:border-sky-400 focus:outline-none resize-none"
             />
           </div>
@@ -187,15 +211,19 @@ export default function ContactModal({ isOpen, onClose }) {
             {sent ? (
               <>
                 <Check className="h-4 w-4" />
-                <span>Transmission Transmitted Securely!</span>
+                <span>Opening your email app…</span>
               </>
             ) : (
               <>
                 <Send className="h-3.5 w-3.5" />
-                <span>Transmit Secure Message</span>
+                <span>Compose email</span>
               </>
             )}
           </button>
+
+          <p className="text-center font-mono text-[9px] uppercase tracking-[0.18em] text-steel/60">
+            Opens your email app with this message ready to send
+          </p>
         </form>
       </div>
     </div>

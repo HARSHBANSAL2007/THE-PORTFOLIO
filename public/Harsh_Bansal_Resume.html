@@ -1,361 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harsh Bansal - Python Developer Resume</title>
-    <style>
-        :root {
-            --primary-gradient: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
-            --text-dark: #1f2937;
-            --text-light: #4b5563;
-            --bg-sidebar: #f0fdf4;
-            --bg-main: #ffffff;
-            --accent-color: #0d9488;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harsh Bansal — Python &amp; Agentic AI Developer — Resume</title>
+<style>
+  /* Kept deliberately plain: real text, real headings, no icon fonts or
+     background images, so an ATS parser reads it as cleanly as a person does.
+     Navy accents match the portfolio; the body stays black on white to print. */
+  :root {
+    --navy: #1e3a8a;
+    --blue: #2563eb;
+    --ink: #111827;
+    --muted: #4b5563;
+    --rule: #d8dee9;
+    --sidebar: #f4f7fb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  body {
+    font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    background: #e7ebf1;
+    color: var(--ink);
+    line-height: 1.55;
+    padding: 28px 12px;
+    display: flex;
+    justify-content: center;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e5e7eb;
-            color: var(--text-dark);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px 10px;
-        }
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 33% 67%;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+  }
 
-        /* Floating Download Button */
-        .download-container {
-            margin-bottom: 20px;
-        }
+  .sidebar { background: var(--sidebar); padding: 30px 22px; border-right: 1px solid var(--rule); }
+  .main { padding: 30px 28px; }
 
-        .download-btn {
-            background: var(--primary-gradient);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
+  h1 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); line-height: 1.15; }
+  .role { font-size: 1rem; font-weight: 600; color: var(--muted); margin-top: 3px; }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(13, 148, 136, 0.3);
-        }
+  .main h2 {
+    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.11em;
+    color: var(--navy); border-bottom: 2px solid var(--blue);
+    padding-bottom: 4px; margin: 20px 0 11px;
+  }
+  .main h2:first-of-type { margin-top: 18px; }
 
-        /* Resume Page Layout (A4/Letter proportions) */
-        .resume-wrapper {
-            width: 210mm;
-            min-height: 297mm;
-            background: var(--bg-main);
-            display: grid;
-            grid-template-columns: 32% 68%;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-            border-radius: 8px;
-            overflow: hidden;
-        }
+  .sidebar h3 {
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.11em;
+    color: var(--navy); border-bottom: 1px solid var(--blue);
+    padding-bottom: 4px; margin-bottom: 9px;
+  }
+  .block { margin-bottom: 22px; }
+  .block:last-child { margin-bottom: 0; }
 
-        /* Sidebar Section */
-        .sidebar {
-            background-color: var(--bg-sidebar);
-            padding: 40px 25px;
-            border-right: 1px solid #e5e7eb;
-        }
+  ul { list-style: none; }
+  .contact li { font-size: 0.8rem; color: var(--muted); margin-bottom: 7px; word-break: break-word; }
+  .contact a { color: var(--blue); text-decoration: none; font-weight: 600; }
 
-        .sidebar-section {
-            margin-bottom: 30px;
-        }
+  .skills li {
+    font-size: 0.78rem; font-weight: 600; color: var(--ink);
+    background: #fff; border-left: 3px solid var(--blue);
+    padding: 5px 9px; margin-bottom: 6px;
+  }
+  .skills .lvl { display: block; font-weight: 400; font-size: 0.68rem; color: var(--muted); }
 
-        /* Main Content Section */
-        .main-content {
-            padding: 40px 30px;
-        }
+  .certs li { font-size: 0.76rem; color: var(--muted); margin-bottom: 8px; padding-left: 11px; position: relative; }
+  .certs li::before { content: "▪"; position: absolute; left: 0; color: var(--blue); }
 
-        /* Gradient Headings */
-        h1, h2, h3 {
-            font-weight: 700;
-        }
+  .summary { font-size: 0.86rem; color: var(--muted); }
 
-        .gradient-text {
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
+  .item { margin-bottom: 15px; }
+  .item:last-child { margin-bottom: 0; }
+  .item-title { font-size: 0.93rem; font-weight: 700; color: var(--ink); }
+  .item-title .tag { font-size: 0.7rem; font-weight: 600; color: var(--blue); }
+  .item-sub { font-size: 0.76rem; font-weight: 600; color: var(--navy); margin: 1px 0 4px; }
+  .item ul { padding-left: 15px; list-style: disc; }
+  .item li { font-size: 0.82rem; color: var(--muted); margin-bottom: 3px; }
 
-        .main-content h2 {
-            font-size: 1.25rem;
-            border-bottom: 2px solid #0d9488;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-            margin-top: 25px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+  @media print {
+    body { background: #fff; padding: 0; display: block; }
+    .page { width: 100%; min-height: 0; box-shadow: none; }
+  }
+  @media (max-width: 860px) {
+    body { padding: 10px 6px; }
+    .page { width: 100%; display: block; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--rule); }
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <aside class="sidebar">
+      <div class="block">
+        <h3>Contact</h3>
+        <ul class="contact">
+          <li>+91 8595783978</li>
+          <li>Delhi, India</li>
+          <li><a href="mailto:harshbansal1145@gmail.com">harshbansal1145@gmail.com</a></li>
+          <li><a href="https://github.com/HARSHBANSAL2007">github.com/HARSHBANSAL2007</a></li>
+          <li><a href="https://www.linkedin.com/in/harsh-bansal-5952bzxc798/">LinkedIn</a></li>
+        </ul>
+      </div>
 
-        .sidebar h3 {
-            font-size: 1.1rem;
-            border-bottom: 2px solid #0d9488;
-            padding-bottom: 4px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #0f766e;
-        }
+      <div class="block">
+        <h3>Technical Skills</h3>
+        <ul class="skills">
+          <li>Python<span class="lvl">Primary language</span></li>
+          <li>LangChain &amp; Gen AI Agents<span class="lvl">Chains, tool calling, loaders</span></li>
+          <li>n8n Workflow Automation<span class="lvl">Event-driven pipelines</span></li>
+          <li>JavaScript, HTML, CSS<span class="lvl">ES6+, React, Tailwind</span></li>
+          <li>SQL &amp; MySQL<span class="lvl">Schema design, transactions</span></li>
+          <li>C &amp; C++<span class="lvl">Pointers, STL, memory</span></li>
+          <li>Data Structures &amp; Algorithms<span class="lvl">Trees, graphs, sorting, DP</span></li>
+          <li>PHP<span class="lvl">Server-side scripting</span></li>
+        </ul>
+      </div>
 
-        /* Header Info */
-        .profile-header {
-            margin-bottom: 30px;
-        }
+      <div class="block">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Gen AI &amp; Agentic AI Certification</li>
+          <li>C/C++ CodeSmart Bootcamp</li>
+          <li>Be10x AI Productivity Workshop</li>
+          <li>Ministry of HRM Certificate</li>
+          <li>Narcotics Control Bureau Certification</li>
+        </ul>
+      </div>
+    </aside>
 
-        .profile-header h1 {
-            font-size: 2rem;
-            line-height: 1.2;
-            margin-bottom: 5px;
-        }
+    <section class="main">
+      <header>
+        <h1>Harsh Bansal</h1>
+        <p class="role">Python &amp; Agentic AI Developer | BCA Student</p>
+      </header>
 
-        .profile-header p.title {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            font-weight: 600;
-        }
+      <h2>Summary</h2>
+      <p class="summary">
+        BCA student at IPU Delhi building AI agents in Python — document parsing, automated
+        analysis, and multi-model workflows orchestrated in n8n. Comfortable across the stack,
+        from relational schema design to the React front end. Looking for an internship where
+        I can ship real systems.
+      </p>
 
-        /* Contact Details */
-        .contact-list, .skills-list, .cert-list {
-            list-style: none;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
+      <h2>Projects</h2>
 
-        .contact-list li {
-            margin-bottom: 10px;
-            word-break: break-all;
-        }
+      <div class="item">
+        <div class="item-title">Multi-Purpose AI Model Workflow Framework <span class="tag">(In Progress)</span></div>
+        <div class="item-sub">n8n · Python · AI APIs · LangChain</div>
+        <ul>
+          <li>Automation framework connecting several AI inference models behind a single entry point.</li>
+          <li>Routes a prompt to a fast or a deeper model depending on what the request needs.</li>
+          <li>Carries state across multi-step runs and retries a failed node instead of dropping the workflow.</li>
+        </ul>
+      </div>
 
-        .skills-list li {
-            background: #ffffff;
-            margin-bottom: 8px;
-            padding: 6px 10px;
-            border-radius: 4px;
-            border-left: 3px solid #0d9488;
-            font-weight: 500;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
+      <div class="item">
+        <div class="item-title">Autonomous AI Agents Suite</div>
+        <div class="item-sub">Python · LangChain · OCR · Pandas</div>
+        <ul>
+          <li>Agent that drafts PowerPoint decks from raw notes or research text.</li>
+          <li>OCR pipeline turning scanned documents into structured, parseable fields.</li>
+          <li>Agent that runs exploratory data analysis on a dataset and reports its findings.</li>
+        </ul>
+      </div>
 
-        /* Experience & Projects Styling */
-        .item {
-            margin-bottom: 20px;
-        }
+      <div class="item">
+        <div class="item-title">BMW Showroom Management System</div>
+        <div class="item-sub">Python · MySQL</div>
+        <ul>
+          <li>Dealership backend covering vehicle inventory, customer records, and sales tracking.</li>
+          <li>Normalised relational schema with foreign keys and transactional writes.</li>
+          <li>Indexed lookups across the vehicle catalogue.</li>
+        </ul>
+      </div>
 
-        .item-title {
-            font-size: 1rem;
-            font-weight: bold;
-            color: var(--text-dark);
-        }
+      <div class="item">
+        <div class="item-title">Personal Portfolio Site</div>
+        <div class="item-sub">React 18 · Tailwind CSS · Vite · Canvas 2D</div>
+        <ul>
+          <li>Built from scratch; background is a hand-written canvas renderer projecting a 3D icosahedron into 2D — no three.js or WebGL.</li>
+          <li>Responsive down to phone width, and respects reduced-motion preferences.</li>
+        </ul>
+      </div>
 
-        .item-subtitle {
-            font-size: 0.85rem;
-            color: #0d9488;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
+      <h2>Education</h2>
 
-        .item ul {
-            padding-left: 18px;
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
+      <div class="item">
+        <div class="item-title">Bachelor of Computer Applications (BCA)</div>
+        <div class="item-sub">Guru Gobind Singh Indraprastha University (IPU), Delhi · 2023 – Present</div>
+        <ul><li>Software engineering, data structures, algorithms, and database systems.</li></ul>
+      </div>
 
-        .item ul li {
-            margin-bottom: 4px;
-        }
-
-        .cert-list li {
-            margin-bottom: 8px;
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        /* Print Optimization */
-        @media print {
-            body {
-                background: none;
-                padding: 0;
-            }
-            .download-container {
-                display: none;
-            }
-            .resume-wrapper {
-                box-shadow: none;
-                width: 100%;
-                border-radius: 0;
-            }
-        @media (max-width: 850px) {
-            body { padding: 10px 5px; }
-            .resume-wrapper {
-                width: 100%;
-                min-width: unset;
-                display: flex;
-                flex-direction: column;
-            }
-            .sidebar {
-                border-right: none;
-                border-bottom: 1px solid #e5e7eb;
-                padding: 30px 20px;
-            }
-            .main-content {
-                padding: 30px 20px;
-            }
-        }
-    </style>
-
-
-
-    <!-- Download Trigger Button -->
-    <div class="download-container">
-        <button class="download-btn" onclick="downloadResume()">📥 Download Resume as HTML</button>
-    </div>
-
-    <!-- Resume Document -->
-    <div class="resume-wrapper" id="resumeToDownload">
-        
-        <!-- SIDEBAR -->
-        <div class="sidebar">
-            <div class="sidebar-section">
-                <h3>Contact</h3>
-                <ul class="contact-list">
-                    <li>📞 +91 8595783978</li>
-                    <li>📍 Delhi, India</li>
-                    <li>✉️ harshbansal1145@gmail.com</li>
-                    <li>🔗 <a href="https://www.linkedin.com/in/harsh-bansal-5952bzxc798/" target="_blank" style="color: #0f766e; text-decoration: none; font-weight: 600;">LinkedIn Profile</a></li>
-                    <li>💻 <a href="https://github.com/HARSHBANSAL2007" target="_blank" style="color: #0f766e; text-decoration: none; font-weight: 600;">GitHub Portfolio</a></li>
-                    <li>💬 Discord: duniya_ka_papa.</li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Core Skills</h3>
-                <ul class="skills-list">
-                    <li>Python &amp; AI Development</li>
-                    <li>JavaScript, HTML, CSS</li>
-                    <li>C &amp; C++ Programming</li>
-                    <li>LangChain &amp; Gen AI Agents</li>
-                    <li>SQL &amp; Database Management</li>
-                    <li>n8n Workflow Automation</li>
-                    <li>Data Structures &amp; Algorithms (DSA)</li>
-                    <li>PHP &amp; Web Scripting</li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <h3>Certifications</h3>
-                <ul class="cert-list">
-                    <li>🏆 Gen AI &amp; Agentic AI Certification</li>
-                    <li>🏆 C/C++ CodeSmart Bootcamp</li>
-                    <li>🏆 Ministry of HRM Certificate</li>
-                    <li>🏆 Narcotics Control Bureau Certification</li>
-                    <li>🏆 Be10x AI Productivity Workshop</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- MAIN CONTENT -->
-        <div class="main-content">
-            <div class="profile-header">
-                <h1 class="gradient-text">Harsh Bansal</h1>
-                <p class="title">Python &amp; AI Developer | BCA Student</p>
-            </div>
-
-            <div class="profile-section">
-                <h2 class="gradient-text">Professional Summary</h2>
-                <p style="font-size: 0.95rem; color: var(--text-light);">
-                    Detail-oriented and innovation-driven BCA student at IPU Delhi with a solid foundation in Python, AI frameworks, and full-stack development. Adept at building custom AI agents, automated multi-purpose workflows using n8n, and scalable applications. Passionate about leveraging cutting-edge technologies to solve complex computational challenges.
-                </p>
-            </div>
-
-            <div class="profile-section">
-                <h2 class="gradient-text">Projects &amp; Innovations</h2>
-                
-                <div class="item">
-                    <div class="item-title">Multi-Purpose AI Model Workflow Framework <span style="font-size: 0.8rem; color:#d97706;">(In Progress)</span></div>
-                    <div class="item-subtitle">Tech Stack: n8n, Python, AI APIs</div>
-                    <ul>
-                        <li>Architecting an automation framework utilizing n8n to connect and run multi-purpose AI inference models seamlessly.</li>
-                        <li>Designed automated data pipelines to streamline context sharing across different LLM endpoints.</li>
-                    </ul>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">Advanced Autonomous AI Agents Suite</div>
-                    <div class="item-subtitle">Tech Stack: Python, LangChain, OCR, EDA tools</div>
-                    <ul>
-                        <li>Developed specialized AI agents capable of automated presentation (PPT) generation, resume parsing, and financial data analysis.</li>
-                        <li>Integrated OCR extraction modules to digitize and process unstructured text documents efficiently.</li>
-                        <li>Performed Exploratory Data Analysis (EDA) pipelines programmatically via AI agent prompts.</li>
-                    </ul>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">BMW Showroom Management System</div>
-                    <div class="item-subtitle">Tech Stack: Python, Database Integration</div>
-                    <ul>
-                        <li>Engineered a backend application simulating car inventory, customer interaction workflows, and sales tracking.</li>
-                        <li>Optimized data transaction logs and query handling speed using efficient programming patterns.</li>
-                    </ul>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">Interactive Personal Portfolio Website</div>
-                    <div class="item-subtitle">Tech Stack: HTML, CSS, JavaScript</div>
-                    <ul>
-                        <li>Built a fully responsive, modern portfolio interface to exhibit software engineering projects and technical certifications.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="profile-section">
-                <h2 class="gradient-text">Education</h2>
-                
-                <div class="item" style="margin-bottom: 10px;">
-                    <div class="item-title">Bachelor of Computer Applications (BCA)</div>
-                    <div class="item-subtitle">Guru Gobind Singh Indraprastha University (IPU), Delhi | Present</div>
-                    <p style="font-size: 0.9rem; color: var(--text-light);">Focusing on core software architecture, data structures, and advanced programming.</p>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">Higher Secondary Education (12th Grade - Commerce)</div>
-                    <div class="item-subtitle">Vivekanand School, Anand Vihar | Scored: 81%</div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- JavaScript for Download Functionality -->
-    <script type="">
-        function downloadResume() {
-            const htmlContent = document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Harsh_Bansal_Resume.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-    </script>
+      <div class="item">
+        <div class="item-title">Senior Secondary (Class 12, Commerce)</div>
+        <div class="item-sub">Vivekanand School, Anand Vihar, Delhi · 81%</div>
+      </div>
+    </section>
+  </main>
 </body>
 </html>

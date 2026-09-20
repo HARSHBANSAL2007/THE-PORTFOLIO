@@ -9,12 +9,36 @@ export default function BackgroundCanvas() {
     const ctx = canvas.getContext("2d");
     let animationFrameId;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    // Honour the user's motion preference: if they've asked for reduced motion we
+    // paint a single static frame and never start the loop.
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+
+    // Size the backing store to the device pixel ratio so the render isn't
+    // blurry on high-DPI screens, but cap it at 2 — beyond that we'd be pushing
+    // 3x the pixels for no visible gain, which is what stalls phones.
+    const sizeCanvas = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    sizeCanvas();
+
+    // Resize fires in bursts while dragging a window; rebuild at most once a frame.
+    let resizeFrame = null;
     const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+      if (resizeFrame !== null) return;
+      resizeFrame = requestAnimationFrame(() => {
+        resizeFrame = null;
+        sizeCanvas();
+      });
     };
     window.addEventListener("resize", handleResize);
 
@@ -25,15 +49,16 @@ export default function BackgroundCanvas() {
     let currentRotX = 0;
 
     const handleMouseMove = (e) => {
-      const normX = (e.clientX / width) - 0.5;
-      const normY = (e.clientY / height) - 0.5;
+      const normX = e.clientX / width - 0.5;
+      const normY = e.clientY / height - 0.5;
       targetRotY = normX * 0.9;
       targetRotX = normY * 0.5;
     };
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
     // Luminous Plasma Flakes / Cyber Embers (110 particles)
-    const flakeCount = 110;
+    // Phones get roughly half the particles: same look, far less per-frame work.
+    const flakeCount = width < 768 ? 45 : 110;
     const flakes = Array.from({ length: flakeCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
@@ -242,14 +267,38 @@ export default function BackgroundCanvas() {
         ctx.restore();
       });
 
-      animationFrameId = requestAnimationFrame(render);
+      // A reduced-motion visitor gets exactly one frame — the scene, held still.
+      if (!motionQuery.matches) {
+        animationFrameId = requestAnimationFrame(render);
+      }
     };
+
+    // A backgrounded tab still burns battery on rAF in some browsers, and the
+    // frames are never seen. Stop on hide, resume on show.
+    const handleVisibility = () => {
+      if (document.hidden) {
+        cancelAnimationFrame(animationFrameId);
+      } else if (!motionQuery.matches) {
+        animationFrameId = requestAnimationFrame(render);
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+
+    // Re-evaluate if the visitor flips the preference while the page is open.
+    const handleMotionChange = () => {
+      cancelAnimationFrame(animationFrameId);
+      render();
+    };
+    motionQuery.addEventListener("change", handleMotionChange);
 
     render();
 
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("visibilitychange", handleVisibility);
+      motionQuery.removeEventListener("change", handleMotionChange);
+      if (resizeFrame !== null) cancelAnimationFrame(resizeFrame);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);

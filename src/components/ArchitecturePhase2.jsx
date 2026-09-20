@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { portfolioData } from "../data/portfolioData";
-import { ArrowUp, Search, Code2, ShieldCheck, Terminal, Cpu, Database, Workflow, Sparkles } from "lucide-react";
+import { portfolioData, SKILL_LEVELS } from "../data/portfolioData";
+import { ArrowUp, Search, Hexagon } from "lucide-react";
+
+// Programming languages get the gold hover treatment. Matched by exact name so
+// renaming a skill can't silently drop it out of (or into) this set.
+const CORE_LANGUAGES = new Set(["Python 3", "JavaScript (ES6+)", "C", "C++", "PHP"]);
 
 export default function ArchitecturePhase2() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -27,7 +31,12 @@ export default function ArchitecturePhase2() {
 
   // Flatten all skills
   const allSkills = skillsGrouped.flatMap((grp, grpIdx) =>
-    grp.items.map((item) => ({ ...item, categoryId: grpIdx, categoryTitle: grp.category }))
+    grp.items.map((item) => ({
+      ...item,
+      categoryId: grpIdx,
+      categoryTitle: grp.category,
+      categoryBadge: grp.badge,
+    }))
   );
 
   // Filter skills based on category and search query
@@ -99,7 +108,7 @@ export default function ArchitecturePhase2() {
                 </span>
               </div>
               <p className="mt-6 max-w-sm font-mono text-[11px] leading-relaxed uppercase tracking-[0.16em] text-steel">
-                BCA SCHOLAR AT IPU DELHI & AUTONOMOUS AGENT ARCHITECT. SPECIALIZING IN PYTHON INFERENCE, N8N ORCHESTRATION, AND LOW-LATENCY SYSTEM WORKFLOWS.
+                BCA STUDENT AT IPU DELHI. I BUILD AI AGENTS IN PYTHON, WIRE MODELS TOGETHER IN N8N, AND WRITE THE BACKENDS THAT HOLD IT ALL UP.
               </p>
             </div>
 
@@ -177,24 +186,23 @@ export default function ArchitecturePhase2() {
           <div id="certifications" className="p-8 sm:p-12 md:col-span-3 flex flex-col justify-between">
             <div>
               <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-steel/60 mb-6">
-                [ 02 // VERIFIED CLEARANCES ]
+                [ 02 // CERTIFICATIONS ]
               </div>
               <div className="flex flex-col gap-4 font-mono text-[10px] uppercase tracking-[0.2em] text-steel">
-                {certifications.map((cert, idx) => (
-                  <div key={idx} className="flex items-center gap-3">
-                    <span className={`h-1.5 w-1.5 rounded-full ${
-                      idx % 2 === 0 ? "bg-sky-400 shadow-[0_0_6px_#38bdf8]" : "bg-blue-600 shadow-[0_0_6px_#2563eb]"
-                    }`} />
-                    <span className="text-bone/90 hover:text-white transition-colors" title={cert.issuer}>
-                      {cert.title}
-                    </span>
+                {certifications.map((cert) => (
+                  <div key={cert.title} className="flex items-start gap-3">
+                    <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-400 shadow-[0_0_6px_#38bdf8]" />
+                    <div className="min-w-0">
+                      <div className="text-bone/90 normal-case tracking-normal">{cert.title}</div>
+                      <div className="mt-0.5 text-[9px] tracking-[0.18em] text-steel/60">{cert.issuer}</div>
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="mt-12 font-mono text-[9px] uppercase tracking-[0.28em] text-steel/50">
-              BUILD_VER // 2026.5.0-QUANTUM
+              {certifications.length} CERTIFICATIONS ON RECORD
             </div>
           </div>
 
@@ -226,95 +234,101 @@ export default function ArchitecturePhase2() {
           </div>
         </div>
 
-        {/* The Detailed Grid with Golden Glow Hover for Core Skills */}
+        {/* Skill cards. Core languages get the gold treatment; everything else stays navy. */}
+        {filteredSkills.length === 0 ? (
+          <div className="rounded-2xl border border-dashed border-line py-16 text-center">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-steel">
+              No skills match &ldquo;{searchQuery}&rdquo;
+            </p>
+            <button
+              type="button"
+              onClick={() => { setSearchQuery(""); setActiveCategory("all"); }}
+              className="mt-4 font-mono text-[10px] uppercase tracking-[0.2em] text-sky-400 underline underline-offset-4 hover:text-sky-300"
+            >
+              Reset filters
+            </button>
+          </div>
+        ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {filteredSkills.map((skill, sIdx) => {
-            const isCore = [
-              "python",
-              "javascript",
-              "html",
-              "css",
-              "c & c++",
-              "c++",
-              "c programming",
-              "sql",
-              "mysql",
-              "php"
-            ].some((term) => skill.name.toLowerCase().includes(term));
+          {filteredSkills.map((skill) => {
+            const meta = SKILL_LEVELS[skill.level] ?? SKILL_LEVELS.working;
+            const isCore = CORE_LANGUAGES.has(skill.name);
 
             return (
-              <div
-                key={sIdx}
-                className={
+              <article
+                key={`${skill.categoryId}-${skill.name}`}
+                title={meta.note}
+                className={`group relative flex flex-col justify-between overflow-hidden rounded-2xl border p-5 backdrop-blur-xl transition-all duration-300 motion-safe:hover:-translate-y-0.5 ${
                   isCore
-                    ? "rounded-2xl border border-line/70 bg-void-card/85 p-5 backdrop-blur-xl transition-all duration-300 hover:border-amber-400/80 hover:bg-amber-950/25 hover:shadow-[0_0_25px_rgba(251,191,36,0.35),0_8px_32px_rgba(245,158,11,0.2)] hover:-translate-y-0.5 group flex flex-col justify-between"
-                    : "rounded-2xl border border-line/70 bg-void-card/85 p-5 backdrop-blur-xl transition-all duration-300 hover:border-sky-400/50 hover:bg-void-card hover:shadow-[0_8px_30px_rgba(37,99,235,0.25)] hover:-translate-y-0.5 group flex flex-col justify-between"
-                }
+                    ? "border-line/70 bg-void-card/85 hover:border-amber-400/80 hover:bg-amber-950/25 hover:shadow-[0_0_28px_rgba(251,191,36,0.35),0_8px_32px_rgba(245,158,11,0.18)]"
+                    : "border-line/70 bg-void-card/85 hover:border-sky-400/50 hover:bg-void-card hover:shadow-[0_8px_30px_rgba(37,99,235,0.25)]"
+                }`}
               >
-                <div>
-                  <div className="flex items-center justify-between font-mono text-[9px] uppercase tracking-[0.2em] mb-3">
-                    <span className={isCore ? "text-amber-400 font-bold group-hover:text-yellow-300 transition-colors" : "text-sky-400 font-bold group-hover:text-sky-300 transition-colors"}>
-                      [ {skill.categoryTitle.slice(5, 17)} ]
+                {/* Hexagon watermark — echoes the icosahedron in the background canvas */}
+                <Hexagon
+                  aria-hidden="true"
+                  className={`pointer-events-none absolute -right-5 -top-5 h-24 w-24 opacity-[0.06] transition-all duration-500 group-hover:rotate-[24deg] group-hover:opacity-[0.16] ${
+                    isCore ? "text-amber-300" : "text-sky-400"
+                  }`}
+                  strokeWidth={0.7}
+                />
+
+                <div className="relative">
+                  <div className="mb-3 flex items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-[0.2em]">
+                    <span className={isCore ? "font-bold text-amber-400" : "font-bold text-sky-400"}>
+                      {skill.categoryBadge}
                     </span>
                     <span
-                      className={
+                      className={`shrink-0 rounded-lg border px-2 py-0.5 text-[9px] font-semibold transition-all ${
                         isCore
-                          ? "rounded-lg border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-amber-300 text-[9px] font-semibold transition-all group-hover:border-amber-400 group-hover:bg-amber-500/25 group-hover:text-yellow-200 group-hover:shadow-[0_0_10px_rgba(251,191,36,0.35)]"
-                          : "rounded-lg border border-line bg-void px-2 py-0.5 text-bone text-[9px] transition-all group-hover:border-sky-500/40 group-hover:text-sky-200"
-                      }
+                          ? "border-amber-500/40 bg-amber-500/10 text-amber-300 group-hover:border-amber-400 group-hover:bg-amber-500/25 group-hover:text-yellow-200"
+                          : "border-line bg-void text-bone group-hover:border-sky-500/40 group-hover:text-sky-200"
+                      }`}
                     >
-                      {skill.level}
+                      {meta.label}
                     </span>
                   </div>
 
-                  <div
-                    className={
+                  <h4
+                    className={`text-base font-bold transition-all ${
                       isCore
-                        ? "text-base font-bold text-amber-300 group-hover:text-yellow-200 group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)] transition-all"
-                        : "text-base font-bold text-white group-hover:text-sky-300 transition-colors"
-                    }
+                        ? "text-amber-300 group-hover:text-yellow-200 group-hover:drop-shadow-[0_0_8px_rgba(251,191,36,0.6)]"
+                        : "text-white group-hover:text-sky-300"
+                    }`}
                   >
-                    <span>{skill.name}</span>
-                  </div>
+                    {skill.name}
+                  </h4>
 
-                  <p className={isCore ? "mt-2 text-xs leading-relaxed text-amber-100/80 group-hover:text-amber-100 transition-colors" : "mt-2 text-xs leading-relaxed text-steel group-hover:text-slate-200 transition-colors"}>
+                  <p className={`mt-2 text-xs leading-relaxed transition-colors ${
+                    isCore ? "text-amber-100/75 group-hover:text-amber-100" : "text-steel group-hover:text-slate-200"
+                  }`}>
                     {skill.desc}
                   </p>
                 </div>
 
-                {/* Visual Telemetry Bar */}
+                {/* Strength meter — width comes from the level, not a guess */}
                 <div
-                  className={
-                    isCore
-                      ? "mt-4 pt-3 border-t border-amber-500/20 flex items-center justify-between font-mono text-[8px] text-amber-400/80 group-hover:border-amber-500/40 group-hover:text-amber-300 transition-colors"
-                      : "mt-4 pt-3 border-t border-line/40 flex items-center justify-between font-mono text-[8px] text-steel/70 transition-colors"
-                  }
+                  className={`relative mt-4 flex items-center justify-between gap-3 border-t pt-3 font-mono text-[8px] uppercase tracking-[0.18em] transition-colors ${
+                    isCore ? "border-amber-500/20 text-amber-400/80 group-hover:border-amber-500/40" : "border-line/40 text-steel/70"
+                  }`}
                 >
-                  <span className={isCore ? "group-hover:text-amber-300 transition-colors" : "group-hover:text-sky-300 transition-colors"}>
-                    STRENGTH
-                  </span>
-                  <div className="w-28 h-1 rounded-full bg-line overflow-hidden">
+                  <span>{meta.label}</span>
+                  <div className="h-1 w-28 shrink-0 overflow-hidden rounded-full bg-line">
                     <div
-                      className={
+                      className={`h-full rounded-full transition-all duration-500 ${
                         isCore
-                          ? "h-full bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-200 group-hover:from-amber-400 group-hover:via-yellow-300 group-hover:to-amber-100 group-hover:shadow-[0_0_12px_#fbbf24] rounded-full transition-all duration-300"
-                          : "h-full bg-gradient-to-r from-blue-500 to-sky-400 rounded-full transition-all duration-300"
-                      }
-                      style={{
-                        width:
-                          skill.level === "Expert" || skill.level === "Primary"
-                            ? "96%"
-                            : skill.level === "Advanced" || skill.level === "Specialist"
-                            ? "90%"
-                            : "84%",
-                      }}
+                          ? "bg-gradient-to-r from-amber-500 via-yellow-400 to-amber-200 group-hover:shadow-[0_0_12px_#fbbf24]"
+                          : "bg-gradient-to-r from-blue-500 to-sky-400"
+                      }`}
+                      style={{ width: `${meta.bar}%` }}
                     />
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
+        )}
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { portfolioData } from "../data/portfolioData";
-import { ArrowUpRight, FileText, Menu, X, Terminal, Sparkles } from "lucide-react";
-import { GithubIcon, LinkedinIcon, DiscordIcon } from "./SocialIcons";
+import { ArrowUpRight, FileText, Menu, X, Terminal } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./SocialIcons";
 
 export default function Navbar({ onOpenResume, onOpenContact }) {
   const [scrolled, setScrolled] = useState(false);
@@ -16,7 +16,13 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
   }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-[80] px-4 pt-4 transition-transform duration-500 md:px-8 md:pt-6">
+    <header
+      className={`fixed inset-x-0 top-0 z-[80] px-4 transition-all duration-500 md:px-8 ${
+        scrolled
+          ? "pt-2 md:pt-3 [&_a]:shadow-[0_8px_30px_rgba(3,7,18,0.85)] [&_nav]:shadow-[0_8px_30px_rgba(3,7,18,0.85)]"
+          : "pt-4 md:pt-6"
+      }`}
+    >
       <div className="mx-auto flex max-w-[1600px] items-center justify-between gap-3">
         {/* Left Monogram / Branding */}
         <a
@@ -32,7 +38,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
               HB // HARSH BANSAL
             </span>
             <span className="font-mono text-[8px] uppercase tracking-[0.25em] text-sky-400/80">
-              SYS: AUTONOMOUS AI
+              PYTHON & AI DEV
             </span>
           </div>
         </a>
@@ -43,7 +49,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
             href="#projects"
             className="rounded-xl px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-steel transition-colors hover:bg-white/5 hover:text-white"
           >
-            <span className="text-sky-400 mr-1.5">[1]</span>ARSENAL
+            <span className="mr-1.5 text-sky-400">[1]</span>PROJECTS
           </a>
           <a
             href="#architecture"
@@ -55,7 +61,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
             href="#certifications"
             className="rounded-xl px-3.5 py-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-steel transition-colors hover:bg-white/5 hover:text-white"
           >
-            <span className="text-sky-400 mr-1.5">[3]</span>CLEARANCES
+            <span className="mr-1.5 text-sky-400">[3]</span>CERTIFICATIONS
           </a>
           <a
             href="#education"
@@ -150,7 +156,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
               onClick={() => setMobileMenuOpen(false)}
               className="border-b border-line/40 py-2.5 text-steel hover:text-white"
             >
-              [3] VERIFIED CLEARANCES
+              [3] CERTIFICATIONS
             </a>
             <a
               href="#education"

@@ -1,22 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { portfolioData } from "../data/portfolioData";
-import { ArrowUpRight, ArrowRight, Copy, Check, Terminal, Mail, Phone, Code2, Database, Cpu, Activity, Sparkles } from "lucide-react";
+import { ArrowUpRight, ArrowRight, Copy, Check, Terminal, Mail, Phone, Code2 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, DiscordIcon } from "./SocialIcons";
 
-export default function HeroPhase1({ onOpenResume, onOpenContact }) {
+export default function HeroPhase1({ onOpenContact }) {
   const [copiedText, setCopiedText] = useState("");
-  const [currentTime, setCurrentTime] = useState("");
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date();
-      setCurrentTime(now.toTimeString().split(" ")[0] + " IST");
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   const copyToClipboard = (text, label) => {
     navigator.clipboard.writeText(text);
     setCopiedText(label);
@@ -36,7 +24,7 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_#38bdf8]"></span>
           </span>
           <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.28em] text-steel">
-            QUANTUM ENGINE // AUTONOMOUS AI & SYSTEMS ARCHITECTURE
+            {identity.statusBadge}
           </span>
         </div>
 
@@ -71,7 +59,7 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
             href="#projects"
             className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center gap-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-white shadow-[0_0_28px_rgba(37,99,235,0.5)] border border-white/20 transition-all duration-300 hover:scale-[1.02] hover:from-blue-500 hover:to-indigo-500 hover:shadow-[0_0_45px_rgba(56,189,248,0.7)]"
           >
-            <span>Explore Arsenal</span>
+            <span>See the work</span>
             <span
               aria-hidden="true"
               className="grid h-5 w-5 place-items-center rounded-lg bg-white/20 text-[11px] text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
@@ -86,7 +74,7 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
             className="group inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl border border-line bg-void-card/85 px-6 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-bone backdrop-blur-xl ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-sky-400/60 hover:bg-blue-600/15 hover:text-white"
           >
             <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse shadow-[0_0_10px_#38bdf8]"></span>
-            <span>Active: Multi-AI Workflow</span>
+            <span>Building: Multi-AI Workflow</span>
           </a>
 
           {/* Access Terminal CTA */}
@@ -114,7 +102,7 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
           <span className="hidden sm:inline text-line/60">|</span>
           <div className="flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]"></span>
-            <span>Available for Hire</span>
+            <span>Open to internships</span>
           </div>
         </div>
 
@@ -123,10 +111,10 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
           <div className="flex items-center justify-between border-b border-line/40 pb-3 mb-4">
             <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.28em] text-sky-400 font-bold">
               <Code2 className="h-3.5 w-3.5" />
-              <span>[ 8 CORE PILLARS // WEAPONRY ]</span>
+              <span>[ CORE STACK ]</span>
             </div>
-            <span className="font-mono text-[9px] text-steel/60 uppercase tracking-widest hidden sm:inline">
-              8 VERIFIED DOMAINS
+            <span className="hidden font-mono text-[9px] uppercase tracking-widest text-steel/60 sm:inline">
+              {primaryTechStack.length} skills · tap for detail
             </span>
           </div>
 
@@ -209,7 +197,7 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
               </span>
               <div className="text-left">
                 <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-steel">
-                  TRANSMISSION CHANNELS // VERIFIED COMMS
+                  GET IN TOUCH
                 </div>
                 <div className="text-xs font-semibold text-bone">
                   Harsh Bansal · <span className="text-sky-400 font-mono text-[10px]">Discord: {contacts.discordHandle}</span>
@@ -303,7 +291,7 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
             </div>
 
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-steel/70">
-              SYS_ORCHESTRATION // ARCH_ID: N8N_PY_01
+              BUILDING NOW // N8N + PYTHON
             </div>
           </div>
 
@@ -334,16 +322,16 @@ export default function HeroPhase1({ onOpenResume, onOpenContact }) {
 
             {/* Visual Telemetry Radar Card */}
             <div className="lg:col-span-4 rounded-2xl border border-line/60 bg-void/90 p-4 font-mono text-[10px] text-steel flex flex-col justify-between gap-3 shadow-inner">
-              <div className="flex items-center justify-between text-[9px] uppercase tracking-[0.2em] text-steel/70 border-b border-line/30 pb-2">
-                <span>PIPELINE TELEMETRY</span>
-                <span className="text-emerald-400 font-bold">NOMINAL</span>
+              <div className="flex items-center justify-between border-b border-line/30 pb-2 text-[9px] uppercase tracking-[0.2em] text-steel/70">
+                <span>WHAT IT DOES</span>
+                <span className="font-bold text-sky-400">IN PROGRESS</span>
               </div>
               
               <div className="space-y-2">
                 {inProgressProject.metrics.map((metric, idx) => (
                   <div key={idx} className="flex items-center justify-between py-1 border-b border-line/20">
                     <span className="text-bone/80">{metric}</span>
-                    <span className="text-sky-400 font-bold">READY</span>
+                    <span className="font-bold text-sky-400/70">WIP</span>
                   </div>
                 ))}
               </div>

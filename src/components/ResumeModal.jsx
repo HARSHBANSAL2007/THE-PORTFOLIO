@@ -1,8 +1,24 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Printer, Download, ExternalLink, X } from "lucide-react";
 
 export default function ResumeModal({ isOpen, onClose }) {
   const iframeRef = useRef(null);
+
+  // Escape closes, and the page behind the modal shouldn't scroll.
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -23,7 +39,7 @@ export default function ResumeModal({ isOpen, onClose }) {
           <div className="flex items-center gap-3">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_#10b981]"></span>
             <span className="font-mono text-xs uppercase tracking-wider text-slate-200 font-bold">
-              Harsh Bansal · Complete Official Resume (HTML / ATS)
+              Harsh Bansal · Resume
             </span>
           </div>
 

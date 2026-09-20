@@ -67,10 +67,37 @@
   animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
-/* Custom cursor hide default on non-touch */
+/* Hide the native cursor only where the custom one actually renders.
+   CustomCursor bails out under reduced-motion, so the second query gives the
+   real cursor back — otherwise those visitors get no pointer at all. */
 @media (hover: hover) and (pointer: fine) {
-  .custom-cursor-active, .custom-cursor-active * {
+  .custom-cursor-active,
+  .custom-cursor-active * {
     cursor: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .custom-cursor-active,
+  .custom-cursor-active * {
+    cursor: auto !important;
+  }
+  .custom-cursor-active a,
+  .custom-cursor-active button,
+  .custom-cursor-active [role="button"] {
+    cursor: pointer !important;
+  }
+}
+
+/* Anything animated should calm down when the visitor asks for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
