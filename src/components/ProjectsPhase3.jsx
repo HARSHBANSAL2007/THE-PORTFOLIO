@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { portfolioData } from "../data/portfolioData";
-import { ArrowUpRight, Terminal as TerminalIcon, GraduationCap } from "lucide-react";
+import { ArrowUpRight, Terminal as TerminalIcon, GraduationCap, Lock } from "lucide-react";
+import { GithubIcon } from "./SocialIcons";
 
 export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
   const [activeModalProject, setActiveModalProject] = useState(null);
+
+  // Escape closes the project detail modal.
+  useEffect(() => {
+    if (!activeModalProject) return;
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setActiveModalProject(null);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [activeModalProject]);
   const [cliInput, setCliInput] = useState("");
   const [cliOutput, setCliOutput] = useState([
     { type: "system", text: "HARSH BANSAL // INTERACTIVE CLI" },
@@ -61,7 +72,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
       case "resume":
         newOutput.push({
           type: "response",
-          text: "Opening ATS printable dossier modal...",
+          text: "Opening resume...",
         });
         if (typeof onOpenResume === "function") {
           onOpenResume();
@@ -99,7 +110,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
           <div>
             <div className="inline-flex items-center gap-2 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.3em] text-sky-400">
               <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-ping"></span>
-              <span>[ 03 // THE ARSENAL ]</span>
+              <span>[ 03 // PROJECTS ]</span>
             </div>
             <h2 className="display-tight mt-3 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-bone">
               FEATURED<br />
@@ -110,14 +121,15 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
           </div>
 
           <div className="max-w-md font-mono text-[11px] leading-relaxed uppercase tracking-[0.16em] text-steel">
-            AUTONOMOUS AGENTS, EVENT PIPELINES, AND COMPUTATIONAL BACKENDS ENGINEERED TO ELIMINATE REDUNDANCY AND POWER REAL-WORLD EXECUTION.
+            A FULL-STACK QUEUE PLATFORM FOR GOVERNMENT PROCUREMENT CENTRES, AI AGENTS THAT RESEARCH AND BUILD DECKS, AND THE BACKENDS UNDERNEATH THEM.
           </div>
         </div>
 
         {/* Projects Grid */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((proj) => {
-            const isHighlight = proj.status === "IN PROGRESS";
+            const isHighlight = proj.highlight;
+            const inProgress = proj.status === "IN PROGRESS";
             return (
               <div
                 key={proj.id}
@@ -132,12 +144,12 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
                     <span className="text-sky-400 font-bold">[ {proj.order} // {proj.genre} ]</span>
                     <span
                       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[9px] tracking-widest ${
-                        isHighlight
+                        inProgress
                           ? "bg-amber-400/10 text-amber-300 border border-amber-400/30"
                           : "bg-void text-steel border border-line"
                       }`}
                     >
-                      <span className={`h-1.5 w-1.5 rounded-full ${isHighlight ? "bg-amber-400 animate-pulse" : "bg-steel/60"}`} />
+                      <span className={`h-1.5 w-1.5 rounded-full ${inProgress ? "bg-amber-400 animate-pulse" : "bg-steel/60"}`} />
                       {proj.status}
                     </span>
                   </div>
@@ -165,14 +177,38 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
                     ))}
                   </div>
 
-                  <button
-                    type="button"
-                    onClick={() => setActiveModalProject(proj)}
-                    className="inline-flex items-center gap-2 rounded-xl border border-line bg-void-card px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-sky-400 hover:border-sky-400 hover:text-white transition-all"
-                  >
-                    <span>Inspect</span>
-                    <ArrowUpRight className="h-3 w-3" />
-                  </button>
+                  <div className="flex items-center gap-2">
+                    {proj.repo ? (
+                      <a
+                        href={proj.repo}
+                        target="_blank"
+                        rel="noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-2 rounded-xl border border-line bg-void-card px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-bone transition-all hover:border-sky-400 hover:text-white"
+                        title={`View ${proj.title} on GitHub`}
+                      >
+                        <GithubIcon className="h-3.5 w-3.5" />
+                        <span>Code</span>
+                      </a>
+                    ) : (
+                      <span
+                        className="inline-flex items-center gap-2 rounded-xl border border-line/60 bg-void/60 px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-steel/70"
+                        title="This repository is private"
+                      >
+                        <Lock className="h-3 w-3" />
+                        <span>Private</span>
+                      </span>
+                    )}
+
+                    <button
+                      type="button"
+                      onClick={() => setActiveModalProject(proj)}
+                      className="inline-flex items-center gap-2 rounded-xl border border-line bg-void-card px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-sky-400 transition-all hover:border-sky-400 hover:text-white"
+                    >
+                      <span>Inspect</span>
+                      <ArrowUpRight className="h-3 w-3" />
+                    </button>
+                  </div>
                 </div>
               </div>
             );
@@ -361,6 +397,36 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
               {activeModalProject.blurb}
             </p>
 
+            {activeModalProject.shots?.length > 0 && (
+              <div className="mt-6 border-t border-line pt-4">
+                <div className="mb-3 font-mono text-[9px] uppercase tracking-[0.25em] text-steel">
+                  SCREENSHOTS:
+                </div>
+                <div className="-mx-1 flex snap-x gap-3 overflow-x-auto px-1 pb-2">
+                  {activeModalProject.shots.map((shot) => (
+                    <a
+                      key={shot.src}
+                      href={shot.src}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group/shot w-64 shrink-0 snap-start"
+                      title="Open full size"
+                    >
+                      <img
+                        src={shot.src}
+                        alt={shot.alt}
+                        loading="lazy"
+                        className="h-36 w-full rounded-xl border border-line object-cover object-top transition-colors group-hover/shot:border-sky-400/60"
+                      />
+                      <span className="mt-1.5 block font-mono text-[9px] leading-snug text-steel/80">
+                        {shot.alt}
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
             <div className="mt-6 border-t border-line pt-4">
               <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-steel mb-3">
                 ARCHITECTURAL CAPABILITIES:
@@ -383,7 +449,18 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
               ))}
             </div>
 
-            <div className="mt-8 flex items-center justify-end gap-3">
+            <div className="mt-8 flex flex-wrap items-center justify-end gap-3">
+              {activeModalProject.repo && (
+                <a
+                  href={activeModalProject.repo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mr-auto inline-flex items-center gap-2 rounded-full border border-line px-5 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone transition-colors hover:border-sky-400 hover:text-white"
+                >
+                  <GithubIcon className="h-3.5 w-3.5" />
+                  <span>View code</span>
+                </a>
+              )}
               <button
                 onClick={() => setActiveModalProject(null)}
                 className="rounded-full border border-line px-5 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-steel hover:text-white"

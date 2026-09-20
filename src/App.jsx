@@ -33,23 +33,23 @@ export default function App() {
           onOpenContact={() => setContactOpen(true)}
         />
 
-        {/* PHASE 2: Architecture, Skills & Verified Clearances ("Chances Make Champions") */}
+        {/* Skills matrix and certifications */}
         <ArchitecturePhase2 />
 
-        {/* PHASE 3: The Arsenal (Projects), Education Changelog & Giant Watermark Footer */}
+        {/* Projects, education timeline, and the interactive CLI */}
         <ProjectsPhase3
           onOpenResume={() => setResumeOpen(true)}
           onOpenContact={() => setContactOpen(true)}
         />
       </main>
 
-      {/* ATS Resume Printable Dossier Modal */}
+      {/* Printable resume */}
       <ResumeModal
         isOpen={resumeOpen}
         onClose={() => setResumeOpen(false)}
       />
 
-      {/* Dispatch Transmission Gateway Modal */}
+      {/* Contact */}
       <ContactModal
         isOpen={contactOpen}
         onClose={() => setContactOpen(false)}

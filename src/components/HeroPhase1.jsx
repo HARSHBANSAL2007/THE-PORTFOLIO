@@ -106,7 +106,7 @@ export default function HeroPhase1({ onOpenContact }) {
           </div>
         </div>
 
-        {/* PROMINENT CORE TECHNOLOGIES ARSENAL (SAME AT REST, EMITS GOLDEN HOVER ON CORE SKILLS) */}
+        {/* Core stack. Languages glow gold on hover; everything else stays navy. */}
         <div className="mt-8 sm:mt-10 w-full max-w-4xl rounded-2xl border border-line/70 bg-void-card/90 p-5 sm:p-6 backdrop-blur-xl ring-1 ring-inset ring-white/10 shadow-[0_10px_35px_rgba(0,0,0,0.7)] text-left">
           <div className="flex items-center justify-between border-b border-line/40 pb-3 mb-4">
             <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.28em] text-sky-400 font-bold">

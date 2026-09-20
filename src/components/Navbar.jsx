@@ -79,7 +79,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
             className="hidden sm:inline-flex items-center gap-2 rounded-xl bg-void-card/80 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.2em] text-bone border border-line/70 backdrop-blur-xl transition-all hover:border-sky-400/50 hover:text-white hover:bg-white/5"
           >
             <FileText className="h-3.5 w-3.5 text-sky-400" />
-            <span>Dossier [PDF]</span>
+            <span>Resume</span>
           </button>
 
           {/* Social Quick-Icons */}
@@ -142,7 +142,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
               onClick={() => setMobileMenuOpen(false)}
               className="border-b border-line/40 py-2.5 text-steel hover:text-white"
             >
-              [1] ARSENAL (PROJECTS)
+              [1] PROJECTS
             </a>
             <a
               href="#architecture"
@@ -173,7 +173,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
               className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-line bg-white/5 py-3 text-bone"
             >
               <FileText className="h-4 w-4 text-sky-400" />
-              <span>Open ATS Resume Dossier</span>
+              <span>View resume</span>
             </button>
             <button
               onClick={() => {
@@ -183,7 +183,7 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
               className="flex items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 font-bold text-white shadow-lg shadow-blue-600/40"
             >
               <Terminal className="h-4 w-4" />
-              <span>Dispatch Transmission Gateway</span>
+              <span>Get in touch</span>
             </button>
           </div>
         </div>

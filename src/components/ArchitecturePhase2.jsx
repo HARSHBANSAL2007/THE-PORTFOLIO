@@ -4,7 +4,7 @@ import { ArrowUp, Search, Hexagon } from "lucide-react";
 
 // Programming languages get the gold hover treatment. Matched by exact name so
 // renaming a skill can't silently drop it out of (or into) this set.
-const CORE_LANGUAGES = new Set(["Python 3", "JavaScript (ES6+)", "C", "C++", "PHP"]);
+const CORE_LANGUAGES = new Set(["Python 3", "JavaScript (ES6+)", "SQL", "C", "C++", "PHP"]);
 
 export default function ArchitecturePhase2() {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -182,7 +182,7 @@ export default function ArchitecturePhase2() {
             </div>
           </div>
 
-          {/* Column 3: Verified Clearances & Certifications */}
+          {/* Column 3: Certifications */}
           <div id="certifications" className="p-8 sm:p-12 md:col-span-3 flex flex-col justify-between">
             <div>
               <div className="font-mono text-[9px] uppercase tracking-[0.3em] text-steel/60 mb-6">

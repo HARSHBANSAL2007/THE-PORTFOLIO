@@ -68,7 +68,7 @@ export default function ContactModal({ isOpen, onClose }) {
           <span>[ GET IN TOUCH ]</span>
         </div>
         <h3 className="text-2xl font-black uppercase text-white">
-          Initiate Transmission
+          Send a message
         </h3>
         <p className="mt-1 text-xs text-steel font-mono">
           Direct communication pipeline for Harsh Bansal. Discord: <span className="text-sky-300 font-bold">{contacts.discordHandle}</span>
