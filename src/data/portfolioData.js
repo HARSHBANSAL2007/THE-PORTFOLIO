@@ -139,8 +139,28 @@ export const portfolioData = {
       ],
     },
     {
-      id: "bmw-management",
+      id: "resume-agent",
       order: "04",
+      title: "AI Resume Generator",
+      status: "BUILT",
+      genre: "Agentic AI",
+      tagline: "Details in, ATS-friendly HTML resume out.",
+      blurb:
+        "A Streamlit app that turns plain-text details into a styled, ATS-friendly HTML resume you can download. Built on a Gemini agent with a Tavily job-search tool, so the output can be aimed at a specific role, and a prompt-refinement step the model writes for itself and caches.",
+      stack: ["Python", "LangChain", "Gemini", "Streamlit", "Tavily"],
+      hue: 195,
+      highlight: false,
+      // Private repo.
+      repo: null,
+      features: [
+        "Agent with a job-search tool so the resume can target a named role",
+        "Self-refining prompt: the model drafts the resume brief once and caches it",
+        "Renders the generated HTML inline and offers it as a download",
+      ],
+    },
+    {
+      id: "bmw-management",
+      order: "05",
       title: "BMW Showroom Management System",
       status: "BUILT",
       genre: "Backend & Databases",
@@ -159,7 +179,7 @@ export const portfolioData = {
     },
     {
       id: "monar-portfolio",
-      order: "05",
+      order: "06",
       title: "This Portfolio",
       status: "LIVE",
       genre: "Frontend Engineering",
