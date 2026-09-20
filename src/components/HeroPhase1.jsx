@@ -20,8 +20,8 @@ export default function HeroPhase1({ onOpenContact }) {
         {/* Top Operational Pill Badge in Electric Navy Blue */}
         <div className="mb-6 sm:mb-8 inline-flex items-center gap-3 rounded-full border border-line/80 bg-void-card/90 px-5 py-2 ring-1 ring-inset ring-white/10 backdrop-blur-2xl shadow-[0_4px_28px_rgba(37,99,235,0.35)]">
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-80"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-sky-400 shadow-[0_0_12px_#38bdf8]"></span>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-rb-yellow opacity-70"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-rb-yellow shadow-[0_0_12px_#FFC906]"></span>
           </span>
           <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.28em] text-steel">
             {identity.statusBadge}
@@ -37,18 +37,18 @@ export default function HeroPhase1({ onOpenContact }) {
             <span className="block text-white/85 drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)]">
               {identity.heroHeading.line2}
             </span>
-            <span className="mt-2 sm:mt-3 block font-serif font-light italic tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-sky-200/90 via-sky-400/90 to-blue-500/90 drop-shadow-[0_0_40px_rgba(56,189,248,0.6)]">
+            <span className="mt-2 block bg-gradient-to-r from-rb-yellow via-rb-red-bright to-rb-red bg-clip-text font-serif font-light italic tracking-tight text-transparent drop-shadow-[0_0_40px_rgba(225,6,0,0.45)] sm:mt-3">
               {identity.heroHeading.italicAccent}
             </span>
           </h1>
 
           {/* Bracket Subtitle */}
           <div className="mt-6 sm:mt-7 flex items-center justify-center gap-3 sm:gap-4 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-steel">
-            <span className="h-px w-6 sm:w-10 bg-line"></span>
+            <span aria-hidden="true" className="h-0.5 w-6 rounded-full bg-gradient-to-r from-transparent to-rb-red sm:w-12"></span>
             <span className="text-body font-medium text-bone/90">
-              [ HARSH BANSAL // PYTHON & AGENTIC AI DEVELOPER · BCA IPU DELHI ]
+              [ HARSH BANSAL // PYTHON &amp; AGENTIC AI DEVELOPER · BCA IPU DELHI ]
             </span>
-            <span className="h-px w-6 sm:w-10 bg-line"></span>
+            <span aria-hidden="true" className="h-0.5 w-6 rounded-full bg-gradient-to-l from-transparent to-rb-yellow sm:w-12"></span>
           </div>
         </div>
 
@@ -57,8 +57,12 @@ export default function HeroPhase1({ onOpenContact }) {
           {/* Primary Action Button */}
           <a
             href="#projects"
-            className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center gap-3.5 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-7 font-mono text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.22em] text-white shadow-[0_0_28px_rgba(37,99,235,0.5)] border border-white/20 transition-all duration-300 hover:scale-[1.02] hover:from-blue-500 hover:to-indigo-500 hover:shadow-[0_0_45px_rgba(56,189,248,0.7)]"
+            className="group relative inline-flex h-12 w-full items-center justify-center gap-3.5 overflow-hidden rounded-2xl border border-white/20 bg-rb-red px-7 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-white shadow-[0_0_28px_rgba(225,6,0,0.45)] transition-all duration-300 hover:scale-[1.02] hover:bg-rb-red-deep hover:shadow-[0_0_45px_rgba(225,6,0,0.65)] sm:w-auto sm:text-[11px]"
           >
+            <span
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-0.5 origin-left scale-x-0 bg-rb-yellow transition-transform duration-300 group-hover:scale-x-100"
+            />
             <span>See the work</span>
             <span
               aria-hidden="true"
@@ -71,9 +75,9 @@ export default function HeroPhase1({ onOpenContact }) {
           {/* Quick Trigger for in-progress project */}
           <a
             href="#in-progress"
-            className="group inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl border border-line bg-void-card/85 px-6 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-bone backdrop-blur-xl ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-sky-400/60 hover:bg-blue-600/15 hover:text-white"
+            className="group inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl border border-line bg-void-card/85 px-6 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-bone backdrop-blur-xl ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-rb-yellow/60 hover:bg-rb-yellow/10 hover:text-white"
           >
-            <span className="h-2 w-2 rounded-full bg-sky-400 animate-pulse shadow-[0_0_10px_#38bdf8]"></span>
+            <span className="h-2 w-2 animate-pulse rounded-full bg-rb-yellow shadow-[0_0_10px_#FFC906]"></span>
             <span>Building: Multi-AI Workflow</span>
           </a>
 
@@ -91,17 +95,17 @@ export default function HeroPhase1({ onOpenContact }) {
         {/* Tri-Status Pill in Navy Theme */}
         <div className="mt-8 sm:mt-10 inline-flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 rounded-2xl border border-line/60 bg-void-card/80 px-6 py-2.5 font-mono text-[9px] uppercase tracking-[0.24em] text-steel/90 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
           <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_#10b981]"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]"></span>
             <span>BCA @ IPU Delhi</span>
           </div>
           <span className="hidden sm:inline text-line/60">|</span>
           <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-sky-400 shadow-[0_0_8px_#38bdf8]"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-rb-yellow shadow-[0_0_8px_#FFC906]"></span>
             <span>Delhi (UTC+5:30)</span>
           </div>
           <span className="hidden sm:inline text-line/60">|</span>
           <div className="flex items-center gap-2">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shadow-[0_0_8px_#3b82f6]"></span>
+            <span className="h-1.5 w-1.5 rounded-full bg-rb-red-bright shadow-[0_0_8px_#FF4D4D]"></span>
             <span>Open to internships</span>
           </div>
         </div>

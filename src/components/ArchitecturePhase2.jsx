@@ -66,7 +66,7 @@ export default function ArchitecturePhase2() {
               <h2 className="display-tight mt-6 text-[10vw] font-black uppercase leading-[0.85] sm:text-[8vw] lg:text-[6.5vw] tracking-[-0.04em] text-bone">
                 ENGINEERING<br />
                 AT SCALE.<br />
-                <span className="font-serif font-light italic tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-bone via-sky-300 to-blue-500 drop-shadow-[0_0_35px_rgba(56,189,248,0.4)]">
+                <span className="bg-gradient-to-r from-rb-yellow via-rb-red-bright to-rb-red bg-clip-text font-serif font-light italic tracking-normal text-transparent drop-shadow-[0_0_35px_rgba(225,6,0,0.35)]">
                   Architecting Intelligence.
                 </span>
               </h2>

@@ -108,7 +108,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
             </div>
             <h2 className="display-tight mt-3 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-bone">
               FEATURED<br />
-              <span className="font-serif italic font-light text-transparent bg-clip-text bg-gradient-to-r from-bone via-sky-300 to-blue-500">
+              <span className="bg-gradient-to-r from-rb-yellow via-rb-red-bright to-rb-red bg-clip-text font-serif font-light italic text-transparent">
                 INNOVATIONS.
               </span>
             </h2>
@@ -129,7 +129,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
                 key={proj.id}
                 className={`relative flex flex-col justify-between rounded-3xl border bg-void-card/90 p-7 sm:p-9 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1.5 group ${
                   isHighlight
-                    ? "border-sky-400/50 shadow-[0_0_35px_rgba(37,99,235,0.25)] hover:border-sky-400"
+                    ? "border-rb-red/50 shadow-[0_0_35px_rgba(225,6,0,0.2)] hover:border-rb-red"
                     : "border-line/70 hover:border-sky-400/40 hover:shadow-void-card"
                 }`}
               >

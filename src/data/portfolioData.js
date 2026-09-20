@@ -101,7 +101,7 @@ export const portfolioData = {
         "An automation framework built in n8n that connects several AI inference models behind a single entry point, handling the data pipeline between them so context survives the hand-off from one model to the next.",
       stack: ["n8n", "Python", "AI APIs", "JSON Pipelines"],
       hue: 220,
-      highlight: true,
+      highlight: false,
       repo: null,
       features: [
         "Routes prompts to a fast or a deeper model depending on the request",

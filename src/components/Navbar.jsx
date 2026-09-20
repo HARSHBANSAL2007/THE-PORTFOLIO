@@ -104,18 +104,18 @@ export default function Navbar({ onOpenResume, onOpenContact }) {
             </a>
           </div>
 
-          {/* Discord Server Link in Royal Blue */}
+          {/* Discord link - outline, so it does not compete with the hero CTA */}
           <a
             href={portfolioData.contacts.discord}
             target="_blank"
             rel="noreferrer"
-            className="group flex items-center gap-2 sm:gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 py-2 pl-4 pr-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-[0_0_24px_rgba(37,99,235,0.45)] border border-white/20 transition-all duration-300 hover:from-blue-500 hover:to-indigo-500 hover:shadow-[0_0_36px_rgba(56,189,248,0.7)]"
+            className="group flex items-center gap-2 rounded-xl border border-line/70 bg-void-card/80 py-2 pl-4 pr-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-bone backdrop-blur-xl transition-all duration-300 hover:border-rb-yellow/60 hover:bg-rb-yellow/10 hover:text-white sm:gap-3"
             title={`Discord Server / @${portfolioData.contacts.discordHandle}`}
           >
             <span>Community</span>
             <span
               aria-hidden="true"
-              className="grid h-6 w-6 place-items-center rounded-lg bg-white/15 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              className="grid h-6 w-6 place-items-center rounded-lg bg-white/10 text-[11px] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             >
               <ArrowUpRight className="h-3.5 w-3.5" />
             </span>

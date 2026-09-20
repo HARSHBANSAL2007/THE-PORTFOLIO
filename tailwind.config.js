@@ -29,6 +29,17 @@ export default {
         ember: {
           DEFAULT: '#38bdf8',
         },
+        /* RB22-inspired accents: a navy car with sharp red and yellow.
+           Used sparingly - navy carries the page, these punctuate it.
+           `red.bright` and `yellow` are the on-dark text variants, chosen
+           to clear 4.5:1 against the void background. */
+        rb: {
+          red: '#E10600',
+          'red-deep': '#B30500',
+          'red-bright': '#FF4D4D',
+          yellow: '#FFC906',
+          'yellow-deep': '#D9A400',
+        },
         bone: {
           DEFAULT: '#f1f5f9',
           dim: '#cbd5e1',
