@@ -22,7 +22,7 @@
     font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
     background: #e7ebf1;
     color: var(--ink);
-    line-height: 1.55;
+    line-height: 1.34;
     padding: 28px 12px;
     display: flex;
     justify-content: center;
@@ -39,56 +39,60 @@
     box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
   }
 
-  .sidebar { background: var(--sidebar); padding: 30px 22px; border-right: 1px solid var(--rule); }
-  .main { padding: 30px 28px; }
+  .sidebar { background: var(--sidebar); padding: 22px 18px; border-right: 1px solid var(--rule); }
+  .main { padding: 22px 24px; }
 
-  h1 { font-size: 1.85rem; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); line-height: 1.15; }
+  h1 { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; color: var(--navy); line-height: 1.15; }
   .role { font-size: 1rem; font-weight: 600; color: var(--muted); margin-top: 3px; }
 
   .main h2 {
     font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.11em;
     color: var(--navy); border-bottom: 2px solid var(--blue);
-    padding-bottom: 4px; margin: 20px 0 11px;
+    padding-bottom: 3px; margin: 12px 0 7px;
   }
-  .main h2:first-of-type { margin-top: 18px; }
+  .main h2:first-of-type { margin-top: 11px; }
 
   .sidebar h3 {
     font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.11em;
     color: var(--navy); border-bottom: 1px solid var(--blue);
     padding-bottom: 4px; margin-bottom: 9px;
   }
-  .block { margin-bottom: 22px; }
+  .block { margin-bottom: 13px; }
   .block:last-child { margin-bottom: 0; }
 
   ul { list-style: none; }
-  .contact li { font-size: 0.8rem; color: var(--muted); margin-bottom: 7px; word-break: break-word; }
+  .contact li { font-size: 0.78rem; color: var(--muted); margin-bottom: 5px; word-break: break-word; }
   .contact a { color: var(--blue); text-decoration: none; font-weight: 600; }
 
   .skills li {
-    font-size: 0.78rem; font-weight: 600; color: var(--ink);
+    font-size: 0.76rem; font-weight: 600; color: var(--ink);
     background: #fff; border-left: 3px solid var(--blue);
-    padding: 5px 9px; margin-bottom: 6px;
+    padding: 4px 9px; margin-bottom: 5px;
   }
   .skills .lvl { display: block; font-weight: 400; font-size: 0.68rem; color: var(--muted); }
 
-  .certs li { font-size: 0.76rem; color: var(--muted); margin-bottom: 8px; padding-left: 11px; position: relative; }
+  .certs li { font-size: 0.75rem; color: var(--muted); margin-bottom: 5px; padding-left: 11px; position: relative; }
   .certs li::before { content: "▪"; position: absolute; left: 0; color: var(--blue); }
 
-  .summary { font-size: 0.86rem; color: var(--muted); }
+  .summary { font-size: 0.83rem; color: var(--muted); }
 
-  .item { margin-bottom: 15px; }
+  .item { margin-bottom: 8px; }
   .item:last-child { margin-bottom: 0; }
+  .main .item:last-of-type { margin-bottom: 0; }
+  .main > *:last-child { margin-bottom: 0; }
   .item-title { font-size: 0.93rem; font-weight: 700; color: var(--ink); }
   .item-title .tag { font-size: 0.7rem; font-weight: 600; color: var(--blue); }
   .item-sub { font-size: 0.76rem; font-weight: 600; color: var(--navy); margin: 1px 0 4px; }
-  .item ul { padding-left: 15px; list-style: disc; }
-  .item li { font-size: 0.82rem; color: var(--muted); margin-bottom: 3px; }
+  .item ul { padding-left: 14px; list-style: disc; }
+  .item li { font-size: 0.8rem; color: var(--muted); margin-bottom: 1px; }
+
+  @page { size: A4; margin: 6mm; }
 
   @media print {
     body { background: #fff; padding: 0; display: block; }
     .page { width: 100%; min-height: 0; box-shadow: none; }
   }
-  @media (max-width: 860px) {
+  @media screen and (max-width: 860px) {
     body { padding: 10px 6px; }
     .page { width: 100%; display: block; }
     .sidebar { border-right: none; border-bottom: 1px solid var(--rule); }
@@ -112,14 +116,13 @@
       <div class="block">
         <h3>Technical Skills</h3>
         <ul class="skills">
-          <li>Python<span class="lvl">Primary language</span></li>
-          <li>LangChain &amp; Gen AI Agents<span class="lvl">Chains, tool calling, loaders</span></li>
-          <li>n8n Workflow Automation<span class="lvl">Event-driven pipelines</span></li>
-          <li>JavaScript, HTML, CSS<span class="lvl">ES6+, React, Tailwind</span></li>
-          <li>SQL &amp; MySQL<span class="lvl">Schema design, transactions</span></li>
-          <li>C &amp; C++<span class="lvl">Pointers, STL, memory</span></li>
-          <li>Data Structures &amp; Algorithms<span class="lvl">Trees, graphs, sorting, DP</span></li>
-          <li>PHP<span class="lvl">Server-side scripting</span></li>
+          <li>Languages<span class="lvl">Python, JavaScript, SQL, C, C++, PHP</span></li>
+          <li>Backend<span class="lvl">Node.js, Express, REST APIs, JWT auth, WebSocket</span></li>
+          <li>Databases<span class="lvl">PostgreSQL, MySQL, schema design, migrations</span></li>
+          <li>AI &amp; Automation<span class="lvl">LangChain, Gemini &amp; Groq APIs, n8n, OCR</span></li>
+          <li>Frontend<span class="lvl">React, HTML5, CSS3, Tailwind, Streamlit</span></li>
+          <li>Testing<span class="lvl">Jest, Supertest, integration &amp; load tests</span></li>
+          <li>Fundamentals<span class="lvl">Data structures &amp; algorithms</span></li>
         </ul>
       </div>
 
@@ -143,50 +146,57 @@
 
       <h2>Summary</h2>
       <p class="summary">
-        BCA student at IPU Delhi building AI agents in Python — document parsing, automated
-        analysis, and multi-model workflows orchestrated in n8n. Comfortable across the stack,
-        from relational schema design to the React front end. Looking for an internship where
-        I can ship real systems.
+        BCA student at IPU Delhi who builds complete systems - a Node.js and PostgreSQL
+        backend with a real-time WebSocket layer and two React front ends for Smart India
+        Hackathon, plus AI agents in Python that research documents and generate deliverables.
+        Seeking an internship where I can ship production software.
       </p>
 
       <h2>Projects</h2>
 
       <div class="item">
-        <div class="item-title">Multi-Purpose AI Model Workflow Framework <span class="tag">(In Progress)</span></div>
-        <div class="item-sub">n8n · Python · AI APIs · LangChain</div>
+        <div class="item-title">KPP - Farmer Procurement Queue Platform <span class="tag">(Smart India Hackathon)</span></div>
+        <div class="item-sub">Node.js &middot; Express &middot; PostgreSQL &middot; WebSocket &middot; React &middot; JWT &middot; Jest</div>
         <ul>
-          <li>Automation framework connecting several AI inference models behind a single entry point.</li>
-          <li>Routes a prompt to a fast or a deeper model depending on what the request needs.</li>
-          <li>Carries state across multi-step runs and retries a failed node instead of dropping the workflow.</li>
+          <li>Replaces the physical crowd at government produce-procurement centres with slot booking, QR check-in tokens, and a live queue.</li>
+          <li>Built a priority queue engine ordering by priority flag, then small and marginal farmers (5 acres or under), then slot time, then arrival - deliberately not first-come-first-served.</li>
+          <li>Race-safe booking so a slot cannot be oversold under concurrent requests, written in raw SQL over an ORM for control of the concurrent paths.</li>
+          <li>Real-time updates over WebSocket, broadcast as full snapshots so farmer and staff views stay consistent after a reconnect.</li>
+          <li>Two React apps on one API - a farmer portal and a staff dashboard with analytics - plus SMS booking for farmers without a smartphone.</li>
+          <li>Jest and Supertest integration suite against a freshly migrated database, including a 50-farmer concurrent booking simulation.</li>
         </ul>
       </div>
 
       <div class="item">
-        <div class="item-title">Autonomous AI Agents Suite</div>
-        <div class="item-sub">Python · LangChain · OCR · Pandas</div>
+        <div class="item-title">AI Presentation Generator</div>
+        <div class="item-sub">Python &middot; LangChain &middot; Gemini &middot; Streamlit &middot; Tavily &middot; OCR</div>
         <ul>
-          <li>Agent that drafts PowerPoint decks from raw notes or research text.</li>
-          <li>OCR pipeline turning scanned documents into structured, parseable fields.</li>
-          <li>Agent that runs exploratory data analysis on a dataset and reports its findings.</li>
+          <li>Agent orchestrating two tools - web search for current material and image generation for slide visuals - behind a single Streamlit interface.</li>
+          <li>Ingests existing PDFs and scans via PyMuPDF and OCR so prior material can feed the deck.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-title">AI Resume Generator</div>
+        <div class="item-sub">Python &middot; LangChain &middot; Gemini &middot; Streamlit</div>
+        <ul>
+          <li>Turns plain-text details into a downloadable, ATS-friendly HTML resume, with a job-search tool so output can target a named role.</li>
         </ul>
       </div>
 
       <div class="item">
         <div class="item-title">BMW Showroom Management System</div>
-        <div class="item-sub">Python · MySQL</div>
+        <div class="item-sub">Python &middot; MySQL</div>
         <ul>
-          <li>Dealership backend covering vehicle inventory, customer records, and sales tracking.</li>
-          <li>Normalised relational schema with foreign keys and transactional writes.</li>
-          <li>Indexed lookups across the vehicle catalogue.</li>
+          <li>Dealership backend covering inventory, customer records, and sales on a normalised schema with transactional writes.</li>
         </ul>
       </div>
 
       <div class="item">
         <div class="item-title">Personal Portfolio Site</div>
-        <div class="item-sub">React 18 · Tailwind CSS · Vite · Canvas 2D</div>
+        <div class="item-sub">React &middot; Tailwind CSS &middot; Vite &middot; Canvas 2D</div>
         <ul>
-          <li>Built from scratch; background is a hand-written canvas renderer projecting a 3D icosahedron into 2D — no three.js or WebGL.</li>
-          <li>Responsive down to phone width, and respects reduced-motion preferences.</li>
+          <li>Hand-written canvas renderer projecting a 3D icosahedron into 2D, with no three.js or WebGL.</li>
         </ul>
       </div>
 
