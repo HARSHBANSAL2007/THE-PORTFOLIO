@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { portfolioData, SKILL_LEVELS } from "../data/portfolioData";
-import { ArrowUp, Search, Hexagon } from "lucide-react";
+import { ArrowUp, Search, Triangle } from "lucide-react";
 
 // Programming languages get the gold hover treatment. Matched by exact name so
 // renaming a skill can't silently drop it out of (or into) this set.
@@ -264,8 +264,8 @@ export default function ArchitecturePhase2() {
                     : "border-line/70 bg-void-card/85 hover:border-sky-400/50 hover:bg-void-card hover:shadow-[0_8px_30px_rgba(37,99,235,0.25)]"
                 }`}
               >
-                {/* Hexagon watermark — echoes the icosahedron in the background canvas */}
-                <Hexagon
+                {/* Angular watermark, echoing the icosahedron facets in the background */}
+                <Triangle
                   aria-hidden="true"
                   className={`pointer-events-none absolute -right-5 -top-5 h-24 w-24 opacity-[0.06] transition-all duration-500 group-hover:rotate-[24deg] group-hover:opacity-[0.16] ${
                     isCore ? "text-amber-300" : "text-sky-400"

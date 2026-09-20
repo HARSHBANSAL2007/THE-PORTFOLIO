@@ -29,21 +29,21 @@ export default function HeroPhase1({ onOpenContact }) {
         </div>
 
         {/* Hero Title Typography (Pure White lines 1 & 2, glowing blue gradient line 3) */}
-        <div className="relative mb-6 sm:mb-8 text-center max-w-4xl">
-          <h1 className="display-tight text-[11vw] font-black uppercase leading-[0.88] sm:text-[8vw] md:text-[6.8vw] lg:text-[5.4vw] tracking-[-0.04em]">
-            <span className="block text-white/85 drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)]">
+        <div className="relative mb-6 w-full max-w-4xl text-center sm:mb-8 lg:max-w-5xl xl:max-w-7xl">
+          <h1 className="display-tight text-[clamp(2rem,10vw,3.25rem)] font-black uppercase leading-[0.9] tracking-[-0.04em] sm:text-[clamp(2.5rem,7.6vw,4rem)] lg:text-[clamp(3rem,5.4vw,5rem)]">
+            <span className="block text-rb-yellow drop-shadow-[0_2px_18px_rgba(0,0,0,0.85)]">
               {identity.heroHeading.line1}
             </span>
-            <span className="block text-white/85 drop-shadow-[0_2px_14px_rgba(0,0,0,0.8)]">
+            <span className="block text-rb-yellow drop-shadow-[0_2px_18px_rgba(0,0,0,0.85)]">
               {identity.heroHeading.line2}
             </span>
-            <span className="mt-2 block bg-gradient-to-r from-rb-yellow via-rb-red-bright to-rb-red bg-clip-text font-serif font-light italic tracking-tight text-transparent drop-shadow-[0_0_40px_rgba(225,6,0,0.45)] sm:mt-3">
+            <span className="mt-2 block bg-gradient-to-r from-rb-red-bright via-rb-red to-rb-red-deep bg-clip-text font-serif font-light italic tracking-tight text-transparent drop-shadow-[0_0_40px_rgba(225,6,0,0.5)] sm:mt-3">
               {identity.heroHeading.italicAccent}
             </span>
           </h1>
 
           {/* Bracket Subtitle */}
-          <div className="mt-6 sm:mt-7 flex items-center justify-center gap-3 sm:gap-4 font-mono text-[10px] sm:text-[11px] uppercase tracking-[0.3em] text-steel">
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 px-2 font-mono text-[9px] uppercase tracking-[0.22em] text-steel sm:mt-7 sm:gap-x-4 sm:text-[11px] sm:tracking-[0.3em]">
             <span aria-hidden="true" className="h-0.5 w-6 rounded-full bg-gradient-to-r from-transparent to-rb-red sm:w-12"></span>
             <span className="text-body font-medium text-bone/90">
               [ HARSH BANSAL // PYTHON &amp; AGENTIC AI DEVELOPER · BCA IPU DELHI ]
