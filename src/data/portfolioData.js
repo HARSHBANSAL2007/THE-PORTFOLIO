@@ -78,7 +78,7 @@ export const portfolioData = {
       tagline: "Replaces the crowd outside a government procurement centre with a fair digital queue.",
       blurb:
         "Built for Smart India Hackathon. Farmers book a slot at a government produce-procurement centre, get a QR token on check-in, and watch their position update live; staff run the queue and read analytics from a separate dashboard. The queue is deliberately not first-come-first-served — it orders by priority flag, then small and marginal farmers (5 acres or under), then booked slot time, then arrival.",
-      stack: ["Node.js", "Express", "PostgreSQL", "WebSocket", "React", "JWT", "Jest"],
+      stack: ["Node.js", "Express", "PostgreSQL", "WebSocket", "React", "JWT"],
       hue: 215,
       highlight: true,
       // Private repo — no link until it is made public.
@@ -88,7 +88,6 @@ export const portfolioData = {
         "Queue state broadcast over WebSocket as a full snapshot, never a diff, so a reconnecting client is always consistent",
         "SMS booking fallback for farmers without a smartphone, and a button-based help tree with no chatbot — every answer is fixed and reviewable",
         "Raw SQL over an ORM for control of the concurrency-sensitive paths, with numbered migrations applied in order",
-        "Jest + Supertest integration suite including a 50-farmer concurrent booking simulation",
       ],
     },
     {
@@ -196,14 +195,15 @@ export const portfolioData = {
    */
   skillsGrouped: [
     {
-      category: "01 // LANGUAGES",
+      category: "01 // LANGUAGES & FOUNDATIONS",
       badge: "LANGUAGES",
       items: [
         { name: "Python 3", level: "primary", desc: "Main language. OOP, file and data handling, API calls, and the agent work below." },
         { name: "JavaScript (ES6+)", level: "primary", desc: "async/await, DOM and canvas APIs, React on the front end and Node on the back." },
-        { name: "SQL", level: "proficient", desc: "Raw SQL over an ORM on the KPP platform — joins, indexes, and hand-written migrations." },
+        { name: "SQL", level: "proficient", desc: "Raw SQL over an ORM on the KPP platform - joins, indexes, and hand-written migrations." },
         { name: "C", level: "working", desc: "Pointers, structs, manual memory, and the algorithm exercises that come with it." },
         { name: "C++", level: "working", desc: "Classes, STL containers, and the CodeSmart Bootcamp curriculum." },
+        { name: "Data Structures & Algorithms", level: "working", desc: "Arrays, linked lists, stacks, queues, trees, graphs, sorting, searching, and DP." },
         { name: "PHP", level: "foundational", desc: "Server-side scripting, form handling, and generating pages from a database." },
       ],
     },
@@ -211,43 +211,34 @@ export const portfolioData = {
       category: "02 // AI & AUTOMATION",
       badge: "AI & AUTOMATION",
       items: [
-        { name: "LangChain", level: "proficient", desc: "Agents with tool calling — the orchestration layer behind the presentation generator." },
+        { name: "LangChain", level: "proficient", desc: "Agents with tool calling - the orchestration layer behind the presentation generator." },
         { name: "LLM APIs (Gemini, Groq)", level: "proficient", desc: "Calling model endpoints with runtime model selection and prompt-shaped output." },
         { name: "Prompt Engineering", level: "proficient", desc: "System instructions, personas, and keeping output in a shape code can parse." },
         { name: "n8n Workflow Automation", level: "working", desc: "Event-driven workflows, webhooks, and error handling across multi-step runs." },
         { name: "Document OCR & Parsing", level: "working", desc: "PyMuPDF and pytesseract turning PDFs and scans into text an agent can use." },
+        { name: "Pandas & EDA", level: "working", desc: "Loading, cleaning, and summarising datasets." },
       ],
     },
     {
-      category: "03 // WEB & INTERFACE",
-      badge: "WEB & INTERFACE",
+      category: "03 // BACKEND & DATA",
+      badge: "BACKEND & DATA",
       items: [
-        { name: "React", level: "proficient", desc: "Components, hooks, context, and routing. Two React apps in KPP plus this site." },
-        { name: "HTML5", level: "proficient", desc: "Semantic structure, accessible markup, and forms that work without JavaScript." },
-        { name: "CSS3", level: "proficient", desc: "Flexbox, Grid, keyframe animation, design tokens, and mobile-first layouts." },
-        { name: "Tailwind CSS", level: "working", desc: "Utility-first styling with a custom theme — the palette and shadows on this page." },
-        { name: "Streamlit", level: "working", desc: "Fast Python UIs for the AI tools — sidebar inputs, spinners, and file downloads." },
-      ],
-    },
-    {
-      category: "04 // BACKEND & REAL-TIME",
-      badge: "BACKEND & REAL-TIME",
-      items: [
-        { name: "Node.js & Express", level: "proficient", desc: "Layered API — routes to controllers to services to models — with middleware for auth and validation." },
+        { name: "Node.js & Express", level: "proficient", desc: "Layered API - routes to controllers to services to models - with middleware for auth and validation." },
         { name: "PostgreSQL", level: "proficient", desc: "Schema design, numbered migrations, and race-safe writes so a slot can't be oversold." },
+        { name: "MySQL", level: "proficient", desc: "Relational modelling, foreign keys, and transactional integrity on the showroom backend." },
         { name: "WebSocket (ws)", level: "working", desc: "Live queue updates broadcast as full snapshots, so a reconnecting client is never stale." },
         { name: "JWT Authentication", level: "working", desc: "Protected admin routes and session handling on the KPP dashboard." },
         { name: "REST APIs & Webhooks", level: "working", desc: "HTTP verbs, JSON payloads, rate limiting, and an inbound SMS webhook." },
       ],
     },
     {
-      category: "05 // DATA & FOUNDATIONS",
-      badge: "DATA & FOUNDATIONS",
+      category: "04 // WEB & INTERFACE",
+      badge: "WEB & INTERFACE",
       items: [
-        { name: "MySQL", level: "proficient", desc: "Relational modelling, foreign keys, and transactional integrity on the showroom backend." },
-        { name: "Jest & Supertest", level: "working", desc: "Integration tests against a fresh migrated database, including a 50-user concurrency simulation." },
-        { name: "Data Structures & Algorithms", level: "working", desc: "Arrays, linked lists, stacks, queues, trees, graphs, sorting, searching, and DP." },
-        { name: "Pandas & EDA", level: "working", desc: "Loading, cleaning, and summarising datasets." },
+        { name: "React", level: "proficient", desc: "Components, hooks, context, and routing. Two React apps in KPP plus this site." },
+        { name: "HTML5", level: "proficient", desc: "Semantic structure, accessible markup, and forms that work without JavaScript." },
+        { name: "CSS3", level: "proficient", desc: "Flexbox, Grid, keyframe animation, design tokens, and mobile-first layouts." },
+        { name: "Streamlit", level: "working", desc: "Fast Python UIs for the AI tools - sidebar inputs, spinners, and file downloads." },
       ],
     },
   ],

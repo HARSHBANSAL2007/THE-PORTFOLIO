@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <title>Harsh Bansal — Python &amp; Agentic AI Developer — Resume</title>
 <style>
   /* Kept deliberately plain: real text, real headings, no icon fonts or
@@ -120,8 +121,7 @@
           <li>Backend<span class="lvl">Node.js, Express, REST APIs, JWT auth, WebSocket</span></li>
           <li>Databases<span class="lvl">PostgreSQL, MySQL, schema design, migrations</span></li>
           <li>AI &amp; Automation<span class="lvl">LangChain, Gemini &amp; Groq APIs, n8n, OCR</span></li>
-          <li>Frontend<span class="lvl">React, HTML5, CSS3, Tailwind, Streamlit</span></li>
-          <li>Testing<span class="lvl">Jest, Supertest, integration &amp; load tests</span></li>
+          <li>Frontend<span class="lvl">React, HTML5, CSS3, Streamlit</span></li>
           <li>Fundamentals<span class="lvl">Data structures &amp; algorithms</span></li>
         </ul>
       </div>
@@ -156,14 +156,13 @@
 
       <div class="item">
         <div class="item-title">KPP - Farmer Procurement Queue Platform <span class="tag">(Smart India Hackathon)</span></div>
-        <div class="item-sub">Node.js &middot; Express &middot; PostgreSQL &middot; WebSocket &middot; React &middot; JWT &middot; Jest</div>
+        <div class="item-sub">Node.js &middot; Express &middot; PostgreSQL &middot; WebSocket &middot; React &middot; JWT</div>
         <ul>
           <li>Replaces the physical crowd at government produce-procurement centres with slot booking, QR check-in tokens, and a live queue.</li>
           <li>Built a priority queue engine ordering by priority flag, then small and marginal farmers (5 acres or under), then slot time, then arrival - deliberately not first-come-first-served.</li>
           <li>Race-safe booking so a slot cannot be oversold under concurrent requests, written in raw SQL over an ORM for control of the concurrent paths.</li>
           <li>Real-time updates over WebSocket, broadcast as full snapshots so farmer and staff views stay consistent after a reconnect.</li>
           <li>Two React apps on one API - a farmer portal and a staff dashboard with analytics - plus SMS booking for farmers without a smartphone.</li>
-          <li>Jest and Supertest integration suite against a freshly migrated database, including a 50-farmer concurrent booking simulation.</li>
         </ul>
       </div>
 
