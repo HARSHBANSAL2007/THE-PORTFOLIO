@@ -106,11 +106,9 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
               <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-ping"></span>
               <span>[ 03 // PROJECTS ]</span>
             </div>
-            <h2 className="display-tight mt-3 text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tight text-bone">
-              FEATURED<br />
-              <span className="bg-gradient-to-r from-rb-yellow via-rb-red-bright to-rb-red bg-clip-text font-serif font-light italic text-transparent">
-                INNOVATIONS.
-              </span>
+            <h2 className="display-tight mt-3 text-4xl font-black uppercase tracking-tight sm:text-6xl lg:text-7xl">
+              <span className="inline-block bg-[linear-gradient(90deg,#38bdf8_0%,#bfe6ff_12%,#F4F7FB_24%,#FFC906_44%,#FF8A00_66%,#FF3B2F_85%,#E10600_100%)] bg-clip-text text-transparent">FEATURED</span><br />
+              <span className="inline-block bg-[linear-gradient(90deg,#38bdf8_0%,#bfe6ff_12%,#F4F7FB_24%,#FFC906_44%,#FF8A00_66%,#FF3B2F_85%,#E10600_100%)] bg-clip-text text-transparent font-serif font-light italic">INNOVATIONS.</span>
             </h2>
           </div>
 

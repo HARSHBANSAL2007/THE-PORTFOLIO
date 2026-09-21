@@ -58,15 +58,17 @@ export default function ArchitecturePhase2() {
       <div className="relative z-10 border-b border-line/80 px-6 py-20 sm:py-28 md:px-12 lg:px-16">
         <div className="mx-auto max-w-[1600px]">
           <div className="flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-4xl">
+            <div className="max-w-4xl lg:max-w-6xl">
               <div className="inline-flex items-center gap-3 font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.35em] text-steel">
                 <span className="h-1.5 w-1.5 rounded-full bg-sky-400 pulse-dot shadow-[0_0_8px_#38bdf8]"></span>
                 <span>SYSTEM SPECIFICATION // ARCHITECTURAL DIRECTORY</span>
               </div>
-              <h2 className="display-tight mt-6 text-[10vw] font-black uppercase leading-[0.85] sm:text-[8vw] lg:text-[6.5vw] tracking-[-0.04em] text-bone">
-                ENGINEERING<br />
-                AT SCALE.<br />
-                <span className="bg-gradient-to-r from-rb-yellow via-rb-red-bright to-rb-red bg-clip-text font-serif font-light italic tracking-normal text-transparent drop-shadow-[0_0_35px_rgba(225,6,0,0.35)]">
+              {/* Size capped so "Architecting Intelligence." stays on one line;
+                  wrapped lines break the per-line gradient. */}
+              <h2 className="display-tight mt-6 text-[clamp(2rem,10vw,2.75rem)] font-black uppercase leading-[0.88] tracking-[-0.04em] sm:text-[clamp(2.5rem,8vw,3.5rem)] lg:text-[clamp(3rem,6vw,4rem)]">
+                <span className="inline-block bg-[linear-gradient(90deg,#38bdf8_0%,#bfe6ff_12%,#F4F7FB_24%,#FFC906_44%,#FF8A00_66%,#FF3B2F_85%,#E10600_100%)] bg-clip-text text-transparent">ENGINEERING</span><br />
+                <span className="inline-block bg-[linear-gradient(90deg,#38bdf8_0%,#bfe6ff_12%,#F4F7FB_24%,#FFC906_44%,#FF8A00_66%,#FF3B2F_85%,#E10600_100%)] bg-clip-text text-transparent">AT SCALE.</span><br />
+                <span className="inline-block bg-[linear-gradient(90deg,#38bdf8_0%,#bfe6ff_12%,#F4F7FB_24%,#FFC906_44%,#FF8A00_66%,#FF3B2F_85%,#E10600_100%)] bg-clip-text text-transparent font-serif font-light italic tracking-normal">
                   Architecting Intelligence.
                 </span>
               </h2>
