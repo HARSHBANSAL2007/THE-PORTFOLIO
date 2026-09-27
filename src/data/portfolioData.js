@@ -63,7 +63,7 @@ export const portfolioData = {
     stack: ["LangGraph", "Ollama", "FastAPI", "n8n", "Python"],
     headline: "Three local models, one assistant",
     blurb:
-      "A Jarvis-style assistant that runs on my own laptop. A LangGraph router sends each request to the right local model - Qwen for tools, Nemotron for reasoning and code, Mistral for writing - and it asks before it does anything that sends, books or deletes.",
+      "A personal AI assistant that runs on my own laptop. A LangGraph router sends each request to the right local model - Qwen for tools, Nemotron for reasoning and code, Mistral for writing - and it asks before it does anything that sends, books or deletes.",
     metrics: ["Local LLM routing", "Tool calling", "Human-in-the-loop"],
     link: "#projects",
     repo: null,
@@ -98,12 +98,14 @@ export const portfolioData = {
       title: "Sentinel - Local AI Assistant",
       status: "ACTIVE",
       genre: "Agentic AI · Local LLMs",
-      tagline: "A Jarvis-style assistant whose models never leave the laptop.",
+      tagline: "A personal AI assistant whose models never leave the laptop.",
       blurb:
         "A personal assistant built to run on my own machine instead of someone else's API. Three open models sit behind one interface, and a LangGraph router decides which one handles each request - a small, fast model for routing and tool calls, a stronger one for reasoning and code, and a third for conversation and writing. It can research, write documents, and act on my email and calendar, but it always stops to ask before doing anything that can't be undone.",
       stack: ["Python", "LangGraph", "LangChain", "FastAPI", "Ollama", "n8n"],
       hue: 205,
       repo: null,
+      // No repository by design - it lives and runs on one machine.
+      repoNote: { label: "Local only", title: "Runs entirely on a local machine - no public repository" },
       features: [
         "Every model runs locally through Ollama - no cloud LLM APIs, so conversations stay on the machine",
         "LangGraph splits the work: Qwen 2.5 3B routes and calls tools, Nemotron Nano takes reasoning and code, Mistral 7B takes conversation and writing",
@@ -113,8 +115,26 @@ export const portfolioData = {
       ],
     },
     {
-      id: "ppt-agent",
+      id: "f1-telemetry",
+      tier: "red",
       order: "03",
+      title: "F1 Telemetry",
+      status: "IN DEVELOPMENT",
+      genre: "Motorsport Data",
+      tagline: "Formula 1 telemetry, documented as it's built.",
+      // Kept deliberately short until the details are confirmed - nothing
+      // here should claim more than is known about the project.
+      blurb:
+        "A Formula 1 telemetry project, currently under development and written up properly as it goes. Full details of the build land here as it takes shape.",
+      stack: [],
+      hue: 0,
+      repo: null,
+      repoNote: { label: "Not published", title: "No public repository yet" },
+      features: [],
+    },
+    {
+      id: "ppt-agent",
+      order: "04",
       title: "AI Presentation Generator",
       status: "BUILT",
       genre: "Agentic AI",
@@ -133,7 +153,7 @@ export const portfolioData = {
     },
     {
       id: "resume-agent",
-      order: "04",
+      order: "05",
       title: "AI Resume Generator",
       status: "BUILT",
       genre: "Agentic AI",
@@ -152,7 +172,7 @@ export const portfolioData = {
     },
     {
       id: "bmw-management",
-      order: "05",
+      order: "06",
       title: "BMW Showroom Management System",
       status: "BUILT",
       genre: "Backend & Databases",
@@ -170,8 +190,7 @@ export const portfolioData = {
     },
     {
       id: "monar-portfolio",
-      tier: "red",
-      order: "06",
+      order: "07",
       title: "This Portfolio",
       status: "LIVE",
       genre: "Frontend Engineering",

@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import useDialog from "../hooks/useDialog";
 import { portfolioData } from "../data/portfolioData";
-import { ArrowUpRight, Terminal as TerminalIcon, GraduationCap, Lock } from "lucide-react";
+import { ArrowUpRight, Terminal as TerminalIcon, GraduationCap, Lock, HardDrive } from "lucide-react";
 import { GithubIcon } from "./SocialIcons";
 
 export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
@@ -54,7 +54,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
       case "projects":
         newOutput.push({
           type: "response",
-          text: projects.map((p, i) => `${i + 1}. ${p.title} (${p.stack.slice(0, 3).join(" + ")})`).join("\n"),
+          text: projects.map((p, i) => `${i + 1}. ${p.title}${p.stack.length ? ` (${p.stack.slice(0, 3).join(" + ")})` : ` [${p.status.toLowerCase()}]`}`).join("\n"),
         });
         break;
       case "contact":
@@ -124,7 +124,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
             // RB-livery portfolio itself, and everything else stays navy.
             const tier = proj.tier;
             // "ACTIVE" (still being updated) and "IN PROGRESS" both get the live badge.
-            const live = proj.status === "IN PROGRESS" || proj.status === "ACTIVE";
+            const live = ["IN PROGRESS", "IN DEVELOPMENT", "ACTIVE"].includes(proj.status);
             return (
               <div
                 key={proj.id}
@@ -194,10 +194,10 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
                     ) : (
                       <span
                         className="inline-flex items-center gap-2 rounded-xl border border-line/60 bg-void/60 px-4 py-2 font-mono text-[10px] uppercase tracking-wider text-steel/70"
-                        title="This repository is private"
+                        title={proj.repoNote?.title ?? "This repository is private"}
                       >
-                        <Lock className="h-3 w-3" />
-                        <span>Private</span>
+                        {proj.repoNote ? <HardDrive className="h-3 w-3" /> : <Lock className="h-3 w-3" />}
+                        <span>{proj.repoNote?.label ?? "Private"}</span>
                       </span>
                     )}
 
@@ -437,6 +437,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
               </div>
             )}
 
+            {activeModalProject.features.length > 0 && (
             <div className="mt-6 border-t border-line pt-4">
               <div className="font-mono text-[9px] uppercase tracking-[0.25em] text-steel mb-3">
                 ARCHITECTURAL CAPABILITIES:
@@ -450,7 +451,9 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
                 ))}
               </ul>
             </div>
+            )}
 
+            {activeModalProject.stack.length > 0 && (
             <div className="mt-6 border-t border-line pt-4 flex flex-wrap gap-2">
               {activeModalProject.stack.map((t, idx) => (
                 <span key={idx} className="rounded-full border border-line bg-void px-3 py-1 font-mono text-[9px] text-steel">
@@ -458,6 +461,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
                 </span>
               ))}
             </div>
+            )}
 
             <div className="mt-8 flex flex-wrap items-center justify-end gap-3">
               {activeModalProject.repo && (
