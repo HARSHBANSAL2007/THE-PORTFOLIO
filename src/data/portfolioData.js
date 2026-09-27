@@ -55,15 +55,16 @@ export const portfolioData = {
     { name: "PHP & Web Scripting", category: "Backend", tag: "Server-side scripting", icon: "PHP" },
   ],
 
+  // Featured in the hero. Sentinel began as the "multi-purpose AI model
+  // workflow" and is still under active development.
   inProgressProject: {
-    tag: "IN PROGRESS",
-    title: "Multi-Purpose AI Model Workflow Framework",
-    stack: ["n8n", "Python", "AI APIs", "LangChain"],
-    headline: "One pipeline, many models",
+    tag: "ACTIVE DEVELOPMENT",
+    title: "Sentinel - Local AI Assistant",
+    stack: ["LangGraph", "Ollama", "FastAPI", "n8n", "Python"],
+    headline: "Three local models, one assistant",
     blurb:
-      "An n8n-based framework that routes a request to whichever AI model suits it, then keeps context consistent as the job moves between them. The interesting part isn't the models — it's passing state cleanly across steps that each want a different input shape.",
-    // What I'm actually building, not benchmark claims.
-    metrics: ["Prompt routing", "Context hand-off", "Retry on failure"],
+      "A Jarvis-style assistant that runs on my own laptop. A LangGraph router sends each request to the right local model - Qwen for tools, Nemotron for reasoning and code, Mistral for writing - and it asks before it does anything that sends, books or deletes.",
+    metrics: ["Local LLM routing", "Tool calling", "Human-in-the-loop"],
     link: "#projects",
     repo: null,
   },
@@ -71,6 +72,7 @@ export const portfolioData = {
   projects: [
     {
       id: "kpp-sih",
+      tier: "gold",
       order: "01",
       title: "KPP — Farmer Procurement Queue Platform",
       status: "BUILT",
@@ -80,7 +82,6 @@ export const portfolioData = {
         "Built for Smart India Hackathon. Farmers book a slot at a government produce-procurement centre, get a QR token on check-in, and watch their position update live; staff run the queue and read analytics from a separate dashboard. The queue is deliberately not first-come-first-served — it orders by priority flag, then small and marginal farmers (5 acres or under), then booked slot time, then arrival.",
       stack: ["Node.js", "Express", "PostgreSQL", "WebSocket", "React", "JWT"],
       hue: 215,
-      highlight: true,
       // Private repo — no link until it is made public.
       repo: null,
       features: [
@@ -91,22 +92,24 @@ export const portfolioData = {
       ],
     },
     {
-      id: "ai-workflow",
+      id: "sentinel",
+      tier: "gold",
       order: "02",
-      title: "Multi-Purpose AI Model Workflow",
-      status: "IN PROGRESS",
-      genre: "Orchestration & Automation",
-      tagline: "Route one request across many models without losing context.",
+      title: "Sentinel - Local AI Assistant",
+      status: "ACTIVE",
+      genre: "Agentic AI · Local LLMs",
+      tagline: "A Jarvis-style assistant whose models never leave the laptop.",
       blurb:
-        "An automation framework built in n8n that connects several AI inference models behind a single entry point, handling the data pipeline between them so context survives the hand-off from one model to the next.",
-      stack: ["n8n", "Python", "AI APIs", "JSON Pipelines"],
-      hue: 220,
-      highlight: false,
+        "A personal assistant built to run on my own machine instead of someone else's API. Three open models sit behind one interface, and a LangGraph router decides which one handles each request - a small, fast model for routing and tool calls, a stronger one for reasoning and code, and a third for conversation and writing. It can research, write documents, and act on my email and calendar, but it always stops to ask before doing anything that can't be undone.",
+      stack: ["Python", "LangGraph", "LangChain", "FastAPI", "Ollama", "n8n"],
+      hue: 205,
       repo: null,
       features: [
-        "Routes prompts to a fast or a deeper model depending on the request",
-        "Carries state across multi-step runs instead of re-sending everything",
-        "Retries a failed node rather than dropping the whole workflow",
+        "Every model runs locally through Ollama - no cloud LLM APIs, so conversations stay on the machine",
+        "LangGraph splits the work: Qwen 2.5 3B routes and calls tools, Nemotron Nano takes reasoning and code, Mistral 7B takes conversation and writing",
+        "Searches the web with cited sources, remembers context about the user, and produces Word documents and PowerPoint decks to download",
+        "Hands email, calendar and reminders to n8n, and waits for an explicit Yes or No before anything that sends, books or deletes",
+        "FastAPI streams replies to a HUD-style interface that shows each step the agent takes, with saved history and per-model health checks",
       ],
     },
     {
@@ -120,7 +123,6 @@ export const portfolioData = {
         "A Streamlit app where one orchestrating agent calls two tools: Tavily web search for current material, and an image generation endpoint for slide visuals. Runs on Gemini with model selection at runtime, and loads PDFs and scanned documents through PyMuPDF and OCR so existing material can feed the deck.",
       stack: ["Python", "LangChain", "Gemini", "Groq", "Streamlit", "Tavily", "OCR"],
       hue: 200,
-      highlight: false,
       repo: "https://github.com/HARSHBANSAL2007/PPT-MAKER-",
       features: [
         "Leader agent orchestrating search and image-generation tools",
@@ -140,7 +142,6 @@ export const portfolioData = {
         "A Streamlit app that turns plain-text details into a styled, ATS-friendly HTML resume you can download. Built on a Gemini agent with a Tavily job-search tool, so the output can be aimed at a specific role, and a prompt-refinement step the model writes for itself and caches.",
       stack: ["Python", "LangChain", "Gemini", "Streamlit", "Tavily"],
       hue: 195,
-      highlight: false,
       // Private repo.
       repo: null,
       features: [
@@ -160,7 +161,6 @@ export const portfolioData = {
         "A Python backend simulating a car dealership: vehicle inventory, customer records, and sales tracking on a MySQL schema. Built to get relational modelling right — foreign keys, joins, and transactions that don't leave the data half-written.",
       stack: ["Python", "MySQL", "Relational Design"],
       hue: 240,
-      highlight: false,
       repo: null,
       features: [
         "Normalised schema across vehicles, customers, and sales records",
@@ -170,6 +170,7 @@ export const portfolioData = {
     },
     {
       id: "monar-portfolio",
+      tier: "red",
       order: "06",
       title: "This Portfolio",
       status: "LIVE",
@@ -179,7 +180,6 @@ export const portfolioData = {
         "Built from scratch in React and Tailwind on Vite. The background is a hand-written 2D canvas renderer: an icosahedron projected into 2D with its own rotation and perspective maths, plus a drifting particle field, all on one animation loop.",
       stack: ["React 18", "Tailwind CSS", "Vite", "Canvas 2D", "JavaScript"],
       hue: 210,
-      highlight: false,
       repo: "https://github.com/HARSHBANSAL2007/THE-PORTFOLIO",
       features: [
         "3D icosahedron projected to 2D by hand — no three.js, no WebGL",
@@ -217,6 +217,8 @@ export const portfolioData = {
         { name: "n8n Workflow Automation", level: "working", desc: "Event-driven workflows, webhooks, and error handling across multi-step runs." },
         { name: "Document OCR & Parsing", level: "working", desc: "PyMuPDF and pytesseract turning PDFs and scans into text an agent can use." },
         { name: "Pandas & EDA", level: "working", desc: "Loading, cleaning, and summarising datasets." },
+        { name: "LangGraph", level: "working", desc: "Graph-based agent flows - routing each request in Sentinel to the model and tools it needs." },
+        { name: "Ollama & Local LLMs", level: "working", desc: "Serving Qwen, Nemotron and Mistral models on a laptop, with no cloud inference." },
       ],
     },
     {
@@ -224,6 +226,7 @@ export const portfolioData = {
       badge: "BACKEND & DATA",
       items: [
         { name: "Node.js & Express", level: "proficient", desc: "Layered API - routes to controllers to services to models - with middleware for auth and validation." },
+        { name: "FastAPI", level: "working", desc: "Async Python APIs with streamed responses and health checks - Sentinel's backend." },
         { name: "PostgreSQL", level: "proficient", desc: "Schema design, numbered migrations, and race-safe writes so a slot can't be oversold." },
         { name: "MySQL", level: "proficient", desc: "Relational modelling, foreign keys, and transactional integrity on the showroom backend." },
         { name: "WebSocket (ws)", level: "working", desc: "Live queue updates broadcast as full snapshots, so a reconnecting client is never stale." },

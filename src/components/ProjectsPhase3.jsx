@@ -54,7 +54,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
       case "projects":
         newOutput.push({
           type: "response",
-          text: "1. Multi-Purpose AI Model Workflow Framework (n8n + AI APIs)\n2. Autonomous AI Agents Suite (LangChain + OCR + EDA)\n3. BMW Showroom Management System (Python + SQL)\n4. Interactive Cyber Gateway & Portfolio",
+          text: projects.map((p, i) => `${i + 1}. ${p.title} (${p.stack.slice(0, 3).join(" + ")})`).join("\n"),
         });
         break;
       case "contact":
@@ -113,40 +113,49 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
           </div>
 
           <div className="max-w-md font-mono text-[11px] leading-relaxed uppercase tracking-[0.16em] text-steel">
-            A FULL-STACK QUEUE PLATFORM FOR GOVERNMENT PROCUREMENT CENTRES, AI AGENTS THAT RESEARCH AND BUILD DECKS, AND THE BACKENDS UNDERNEATH THEM.
+            A FULL-STACK QUEUE PLATFORM FOR GOVERNMENT PROCUREMENT CENTRES, A PRIVATE AI ASSISTANT THAT RUNS ON LOCAL MODELS, AND THE AGENTS AND BACKENDS AROUND THEM.
           </div>
         </div>
 
         {/* Projects Grid */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((proj) => {
-            const isHighlight = proj.highlight;
-            const inProgress = proj.status === "IN PROGRESS";
+            // Visual hierarchy: gold marks the flagship work, red marks the
+            // RB-livery portfolio itself, and everything else stays navy.
+            const tier = proj.tier;
+            // "ACTIVE" (still being updated) and "IN PROGRESS" both get the live badge.
+            const live = proj.status === "IN PROGRESS" || proj.status === "ACTIVE";
             return (
               <div
                 key={proj.id}
                 className={`relative flex flex-col justify-between rounded-3xl border bg-void-card/90 p-7 sm:p-9 backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1.5 group ${
-                  isHighlight
-                    ? "border-rb-red/50 shadow-[0_0_35px_rgba(225,6,0,0.2)] hover:border-rb-red"
+                  tier === "gold"
+                    ? "border-rb-yellow/55 shadow-[0_0_38px_rgba(255,201,6,0.18)] hover:border-rb-yellow hover:shadow-[0_0_48px_rgba(255,201,6,0.3)]"
+                    : tier === "red"
+                    ? "border-rb-red/55 shadow-[0_0_35px_rgba(225,6,0,0.2)] hover:border-rb-red hover:shadow-[0_0_45px_rgba(225,6,0,0.32)]"
                     : "border-line/70 hover:border-sky-400/40 hover:shadow-void-card"
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between font-mono text-[9px] sm:text-[10px] uppercase tracking-[0.24em] text-steel/80 pb-6 border-b border-line/40">
-                    <span className="text-sky-400 font-bold">[ {proj.order} // {proj.genre} ]</span>
+                    <span className={`font-bold ${tier === "gold" ? "text-rb-yellow" : tier === "red" ? "text-rb-red-bright" : "text-sky-400"}`}>
+                      [ {proj.order} // {proj.genre} ]
+                    </span>
                     <span
                       className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 font-mono text-[9px] tracking-widest ${
-                        inProgress
+                        live
                           ? "bg-amber-400/10 text-amber-300 border border-amber-400/30"
                           : "bg-void text-steel border border-line"
                       }`}
                     >
-                      <span className={`h-1.5 w-1.5 rounded-full ${inProgress ? "bg-amber-400 animate-pulse" : "bg-steel/60"}`} />
+                      <span className={`h-1.5 w-1.5 rounded-full ${live ? "bg-amber-400 animate-pulse" : "bg-steel/60"}`} />
                       {proj.status}
                     </span>
                   </div>
 
-                  <h3 className="display-tight mt-6 text-2xl sm:text-3xl font-black uppercase tracking-tight text-bone group-hover:text-sky-300 transition-colors">
+                  <h3 className={`display-tight mt-6 text-2xl font-black uppercase tracking-tight transition-colors sm:text-3xl ${
+                    tier === "gold" ? "text-bone group-hover:text-rb-yellow" : tier === "red" ? "text-bone group-hover:text-rb-red-bright" : "text-bone group-hover:text-sky-300"
+                  }`}>
                     {proj.title}
                   </h3>
                   <p className="mt-2 font-mono text-xs text-sky-400">

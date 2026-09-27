@@ -78,7 +78,7 @@ export default function HeroPhase1({ onOpenContact }) {
             className="group inline-flex h-12 w-full sm:w-auto items-center justify-center gap-2.5 rounded-2xl border border-line bg-void-card/85 px-6 font-mono text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.2em] text-bone backdrop-blur-xl ring-1 ring-inset ring-white/10 transition-all duration-300 hover:border-rb-yellow/60 hover:bg-rb-yellow/10 hover:text-white"
           >
             <span className="h-2 w-2 animate-pulse rounded-full bg-rb-yellow shadow-[0_0_10px_#FFC906]"></span>
-            <span>Building: Multi-AI Workflow</span>
+            <span>Building: Sentinel</span>
           </a>
 
           {/* Access Terminal CTA */}
@@ -295,7 +295,7 @@ export default function HeroPhase1({ onOpenContact }) {
             </div>
 
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-steel/70">
-              BUILDING NOW // N8N + PYTHON
+              BUILDING NOW // LANGGRAPH + OLLAMA
             </div>
           </div>
 
@@ -330,14 +330,14 @@ export default function HeroPhase1({ onOpenContact }) {
             <div className="lg:col-span-4 rounded-2xl border border-line/60 bg-void/90 p-4 font-mono text-[10px] text-steel flex flex-col justify-between gap-3 shadow-inner">
               <div className="flex items-center justify-between border-b border-line/30 pb-2 text-[9px] uppercase tracking-[0.2em] text-steel">
                 <span>WHAT IT DOES</span>
-                <span className="font-bold text-sky-400">IN PROGRESS</span>
+                <span className="font-bold text-sky-400">ACTIVE</span>
               </div>
               
               <div className="space-y-2">
                 {inProgressProject.metrics.map((metric, idx) => (
                   <div key={idx} className="flex items-center justify-between py-1 border-b border-line/20">
                     <span className="text-bone/80">{metric}</span>
-                    <span className="font-bold text-sky-400/70">WIP</span>
+                    <span className="font-bold text-sky-400/70">LIVE</span>
                   </div>
                 ))}
               </div>

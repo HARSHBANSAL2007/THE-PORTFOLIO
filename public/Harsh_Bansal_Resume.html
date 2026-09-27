@@ -118,9 +118,9 @@
         <h3>Technical Skills</h3>
         <ul class="skills">
           <li>Languages<span class="lvl">Python, JavaScript, SQL, C, C++, PHP</span></li>
-          <li>Backend<span class="lvl">Node.js, Express, REST APIs, JWT auth, WebSocket</span></li>
+          <li>Backend<span class="lvl">Node.js, Express, FastAPI, REST APIs, JWT, WebSocket</span></li>
           <li>Databases<span class="lvl">PostgreSQL, MySQL, schema design, migrations</span></li>
-          <li>AI &amp; Automation<span class="lvl">LangChain, Gemini &amp; Groq APIs, n8n, OCR</span></li>
+          <li>AI &amp; Automation<span class="lvl">LangChain, LangGraph, Ollama (local LLMs), Gemini &amp; Groq APIs, n8n, OCR</span></li>
           <li>Frontend<span class="lvl">React, HTML5, CSS3, Streamlit</span></li>
           <li>Fundamentals<span class="lvl">Data structures &amp; algorithms</span></li>
         </ul>
@@ -158,10 +158,18 @@
         <div class="item-sub">Node.js &middot; Express &middot; PostgreSQL &middot; WebSocket &middot; React &middot; JWT</div>
         <ul>
           <li>Replaces the physical crowd at government produce-procurement centres with slot booking, QR check-in tokens, and a live queue.</li>
-          <li>Built a priority queue engine ordering by priority flag, then small and marginal farmers (5 acres or under), then slot time, then arrival - deliberately not first-come-first-served.</li>
+          <li>Priority queue engine that favours small and marginal farmers (5 acres or under) over plain first-come-first-served.</li>
           <li>Race-safe booking so a slot cannot be oversold under concurrent requests, written in raw SQL over an ORM for control of the concurrent paths.</li>
-          <li>Real-time updates over WebSocket, broadcast as full snapshots so farmer and staff views stay consistent after a reconnect.</li>
-          <li>Two React apps on one API - a farmer portal and a staff dashboard with analytics - plus SMS booking for farmers without a smartphone.</li>
+          <li>Two React apps on one API - farmer portal and staff dashboard - kept in sync over WebSocket snapshots, plus SMS booking for farmers without a smartphone.</li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-title">Sentinel - Local AI Assistant</div>
+        <div class="item-sub">Python &middot; LangGraph &middot; LangChain &middot; FastAPI &middot; Ollama &middot; n8n</div>
+        <ul>
+          <li>Jarvis-style assistant running three local LLMs through Ollama, with no cloud LLM APIs; LangGraph routes each request - Qwen 2.5 3B for tools, Nemotron Nano for reasoning and code, Mistral 7B for writing.</li>
+          <li>Cited web search, user memory, Word/PowerPoint generation, and n8n-driven email and calendar actions gated by a Yes/No check; FastAPI streams replies to a HUD-style UI with per-model health checks.</li>
         </ul>
       </div>
 
@@ -178,7 +186,7 @@
         <div class="item-title">AI Resume Generator</div>
         <div class="item-sub">Python &middot; LangChain &middot; Gemini &middot; Streamlit</div>
         <ul>
-          <li>Turns plain-text details into a downloadable, ATS-friendly HTML resume, with a job-search tool so output can target a named role.</li>
+          <li>Turns plain-text details into a downloadable, ATS-friendly HTML resume aimed at a named role.</li>
         </ul>
       </div>
 
@@ -187,14 +195,6 @@
         <div class="item-sub">Python &middot; MySQL</div>
         <ul>
           <li>Dealership backend covering inventory, customer records, and sales on a normalised schema with transactional writes.</li>
-        </ul>
-      </div>
-
-      <div class="item">
-        <div class="item-title">Personal Portfolio Site</div>
-        <div class="item-sub">React &middot; Tailwind CSS &middot; Vite &middot; Canvas 2D</div>
-        <ul>
-          <li>Hand-written canvas renderer projecting a 3D icosahedron into 2D, with no three.js or WebGL.</li>
         </ul>
       </div>
 
