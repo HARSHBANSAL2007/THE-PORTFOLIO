@@ -126,8 +126,8 @@ export const portfolioData = {
       // Written from the project's design documentation. It is in the build
       // phase, so the copy describes what it does by design, not a shipped app.
       blurb:
-        "A web app for newer Formula 1 fans who can see a flag come out but not what it means. It shows the current flag, explains in plain language why race control raised it, and lists official messages as the race unfolds. The design is documented before the code - problem definition, an IEEE 830-style SRS, data flow diagrams and a use case model - and it is being built in increments, login and the flag display first.",
-      stack: ["Python", "Flask", "JavaScript", "MySQL", "HTML/CSS"],
+        "A web app for newer Formula 1 fans who can see a flag come out but not what it means. It shows the current flag, explains in plain language why race control raised it, and lists official messages as the race unfolds. The design is documented before the code - an IEEE 830-style SRS, an ER model, data flow diagrams and a use case model - and it is being built in increments, login and the flag display first, with the back end and PostgreSQL database deployed on Railway.",
+      stack: ["Python", "Flask", "PostgreSQL", "JavaScript", "Railway"],
       hue: 0,
       repo: null,
       repoNote: { label: "Not published", title: "No public repository yet" },
@@ -135,8 +135,8 @@ export const portfolioData = {
         "Current flag shown with a plain-language reason, for viewers who don't know the rulebook",
         "Race control messages listed as the race unfolds, refreshed every few seconds",
         "Role-based login: fans follow the race and manage their profile; admins keep race, flag and driver data current",
-        "Relational schema for users, races, flags, messages and drivers, with passwords stored hashed",
-        "Documented up front: problem definition, SRS, level 0 and level 1 DFDs, and a use case diagram",
+        "PostgreSQL schema for users, races, flags, messages and drivers - drivers linked to races many-to-many - with passwords stored hashed",
+        "Documented up front: SRS, ER diagram, level 0 and level 1 DFDs, and a use case diagram",
       ],
     },
     {
