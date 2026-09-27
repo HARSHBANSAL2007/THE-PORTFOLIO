@@ -59,12 +59,12 @@ export const portfolioData = {
   // workflow" and is still under active development.
   inProgressProject: {
     tag: "ACTIVE DEVELOPMENT",
-    title: "Sentinel - Local AI Assistant",
-    stack: ["LangGraph", "Ollama", "FastAPI", "n8n", "Python"],
-    headline: "Three local models, one assistant",
+    title: "Sentinel - Personal AI Assistant",
+    stack: ["LangGraph", "Ollama", "Groq", "Gemini", "FastAPI", "n8n"],
+    headline: "Local and online models, one assistant",
     blurb:
-      "A personal AI assistant that runs on my own laptop. A LangGraph router sends each request to the right local model - Qwen for tools, Nemotron for reasoning and code, Mistral for writing - and it asks before it does anything that sends, books or deletes.",
-    metrics: ["Local LLM routing", "Tool calling", "Human-in-the-loop"],
+      "A personal AI assistant built around my own laptop. Three local models run through Ollama with two online models, from Groq and Gemini, alongside them. It reads the files you attach, and it asks before it does anything that sends, books or deletes.",
+    metrics: ["Multi-model routing", "File attachments", "Human-in-the-loop"],
     link: "#projects",
     repo: null,
   },
@@ -95,20 +95,21 @@ export const portfolioData = {
       id: "sentinel",
       tier: "gold",
       order: "02",
-      title: "Sentinel - Local AI Assistant",
+      title: "Sentinel - Personal AI Assistant",
       status: "ACTIVE",
-      genre: "Agentic AI · Local LLMs",
-      tagline: "A personal AI assistant whose models never leave the laptop.",
+      genre: "Agentic AI · Local + Online LLMs",
+      tagline: "Three models on the laptop, two in the cloud, one assistant.",
       blurb:
-        "A personal assistant built to run on my own machine instead of someone else's API. Three open models sit behind one interface, and a LangGraph router decides which one handles each request - a small, fast model for routing and tool calls, a stronger one for reasoning and code, and a third for conversation and writing. It can research, write documents, and act on my email and calendar, but it always stops to ask before doing anything that can't be undone.",
-      stack: ["Python", "LangGraph", "LangChain", "FastAPI", "Ollama", "n8n"],
+        "A personal assistant built around my own machine. Three open models run locally through Ollama, with two online models - from Groq and Gemini - alongside them, and LangGraph coordinates the work between them. It reads files you attach, researches with cited sources, writes documents, and acts on my email and calendar, but it always stops to ask before doing anything that can't be undone.",
+      stack: ["Python", "LangGraph", "LangChain", "FastAPI", "Ollama", "Groq", "Gemini", "n8n"],
       hue: 205,
       repo: null,
-      // No repository by design - it lives and runs on one machine.
-      repoNote: { label: "Local only", title: "Runs entirely on a local machine - no public repository" },
+      // No repository by design - the code is kept on one machine.
+      repoNote: { label: "Local only", title: "Kept on a local machine - no public repository" },
       features: [
-        "Every model runs locally through Ollama - no cloud LLM APIs, so conversations stay on the machine",
-        "LangGraph splits the work: Qwen 2.5 3B routes and calls tools, Nemotron Nano takes reasoning and code, Mistral 7B takes conversation and writing",
+        "Five models behind one interface: Qwen 2.5 3B, Nemotron Nano and Mistral 7B locally through Ollama, plus online models from Groq and Gemini",
+        "LangGraph splits the local work: Qwen routes and calls tools, Nemotron takes reasoning and code, Mistral takes conversation and writing",
+        "Attach PDFs, PowerPoint decks and other files for the assistant to read and work from",
         "Searches the web with cited sources, remembers context about the user, and produces Word documents and PowerPoint decks to download",
         "Hands email, calendar and reminders to n8n, and waits for an explicit Yes or No before anything that sends, books or deletes",
         "FastAPI streams replies to a HUD-style interface that shows each step the agent takes, with saved history and per-model health checks",
@@ -120,17 +121,23 @@ export const portfolioData = {
       order: "03",
       title: "F1 Telemetry",
       status: "IN DEVELOPMENT",
-      genre: "Motorsport Data",
-      tagline: "Formula 1 telemetry, documented as it's built.",
-      // Kept deliberately short until the details are confirmed - nothing
-      // here should claim more than is known about the project.
+      genre: "Full-Stack · Motorsport",
+      tagline: "Explains a live F1 race - every flag, and why it was shown.",
+      // Written from the project's design documentation. It is in the build
+      // phase, so the copy describes what it does by design, not a shipped app.
       blurb:
-        "A Formula 1 telemetry project, currently under development and written up properly as it goes. Full details of the build land here as it takes shape.",
-      stack: [],
+        "A web app for newer Formula 1 fans who can see a flag come out but not what it means. It shows the current flag, explains in plain language why race control raised it, and lists official messages as the race unfolds. The design is documented before the code - problem definition, an IEEE 830-style SRS, data flow diagrams and a use case model - and it is being built in increments, login and the flag display first.",
+      stack: ["Python", "Flask", "JavaScript", "MySQL", "HTML/CSS"],
       hue: 0,
       repo: null,
       repoNote: { label: "Not published", title: "No public repository yet" },
-      features: [],
+      features: [
+        "Current flag shown with a plain-language reason, for viewers who don't know the rulebook",
+        "Race control messages listed as the race unfolds, refreshed every few seconds",
+        "Role-based login: fans follow the race and manage their profile; admins keep race, flag and driver data current",
+        "Relational schema for users, races, flags, messages and drivers, with passwords stored hashed",
+        "Documented up front: problem definition, SRS, level 0 and level 1 DFDs, and a use case diagram",
+      ],
     },
     {
       id: "ppt-agent",
@@ -231,13 +238,13 @@ export const portfolioData = {
       badge: "AI & AUTOMATION",
       items: [
         { name: "LangChain", level: "proficient", desc: "Agents with tool calling - the orchestration layer behind the presentation generator." },
-        { name: "LLM APIs (Gemini, Groq)", level: "proficient", desc: "Calling model endpoints with runtime model selection and prompt-shaped output." },
+        { name: "LLM APIs (Gemini, Groq)", level: "proficient", desc: "Calling Gemini and Groq models from code - in the presentation generator and alongside Sentinel's local models." },
         { name: "Prompt Engineering", level: "proficient", desc: "System instructions, personas, and keeping output in a shape code can parse." },
         { name: "n8n Workflow Automation", level: "working", desc: "Event-driven workflows, webhooks, and error handling across multi-step runs." },
         { name: "Document OCR & Parsing", level: "working", desc: "PyMuPDF and pytesseract turning PDFs and scans into text an agent can use." },
         { name: "Pandas & EDA", level: "working", desc: "Loading, cleaning, and summarising datasets." },
         { name: "LangGraph", level: "working", desc: "Graph-based agent flows - routing each request in Sentinel to the model and tools it needs." },
-        { name: "Ollama & Local LLMs", level: "working", desc: "Serving Qwen, Nemotron and Mistral models on a laptop, with no cloud inference." },
+        { name: "Ollama & Local LLMs", level: "working", desc: "Serving Qwen, Nemotron and Mistral models locally on a laptop - the core of Sentinel." },
       ],
     },
     {

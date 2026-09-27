@@ -113,7 +113,7 @@ export default function ProjectsPhase3({ onOpenContact, onOpenResume }) {
           </div>
 
           <div className="max-w-md font-mono text-[11px] leading-relaxed uppercase tracking-[0.16em] text-steel">
-            A FULL-STACK QUEUE PLATFORM FOR GOVERNMENT PROCUREMENT CENTRES, A PRIVATE AI ASSISTANT THAT RUNS ON LOCAL MODELS, AND THE AGENTS AND BACKENDS AROUND THEM.
+            A FULL-STACK QUEUE PLATFORM FOR GOVERNMENT PROCUREMENT CENTRES, A PERSONAL AI ASSISTANT ON LOCAL AND ONLINE MODELS, AN F1 RACE COMPANION, AND THE AGENTS AND BACKENDS AROUND THEM.
           </div>
         </div>
 
