@@ -245,11 +245,10 @@ export const portfolioData = {
 
   // No invented authorisation codes. Issuer is what it is; add dates when handy.
   certifications: [
+    { title: "SIH 2026 Internal Hackathon - Participation", issuer: "Innovage Tech, IITM Janakpuri · Sep 2026" },
     { title: "Gen AI & Agentic AI Certification", issuer: "Certification programme" },
     { title: "C/C++ CodeSmart Bootcamp", issuer: "CodeSmart" },
     { title: "Be10x AI Productivity Workshop", issuer: "Be10x" },
-    { title: "Ministry of HRM Certificate", issuer: "Government of India" },
-    { title: "Narcotics Control Bureau Certification", issuer: "Narcotics Control Bureau" },
   ],
 
   education: [
