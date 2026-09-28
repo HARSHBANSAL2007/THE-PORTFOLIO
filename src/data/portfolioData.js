@@ -76,10 +76,10 @@ export const portfolioData = {
       order: "01",
       title: "KPP — Farmer Procurement Queue Platform",
       status: "BUILT",
-      genre: "Full-Stack · Smart India Hackathon",
+      genre: "Full-Stack · SIH 2026 · Cleared internal round",
       tagline: "Replaces the crowd outside a government procurement centre with a fair digital queue.",
       blurb:
-        "Built for Smart India Hackathon. Farmers book a slot at a government produce-procurement centre, get a QR token on check-in, and watch their position update live; staff run the queue and read analytics from a separate dashboard. The queue is deliberately not first-come-first-served — it orders by priority flag, then small and marginal farmers (5 acres or under), then booked slot time, then arrival.",
+        "Built for Smart India Hackathon 2026, and cleared the institute's internal round. Farmers book a slot at a government produce-procurement centre, get a QR token on check-in, and watch their position update live; staff run the queue and read analytics from a separate dashboard. The queue is deliberately not first-come-first-served — it orders by priority flag, then small and marginal farmers (5 acres or under), then booked slot time, then arrival.",
       stack: ["Node.js", "Express", "PostgreSQL", "WebSocket", "React", "JWT"],
       hue: 215,
       // Private repo — no link until it is made public.
@@ -274,7 +274,7 @@ export const portfolioData = {
 
   // No invented authorisation codes. Issuer is what it is; add dates when handy.
   certifications: [
-    { title: "SIH 2026 Internal Hackathon - Participation", issuer: "Innovage Tech, IITM Janakpuri · Sep 2026" },
+    { title: "SIH 2026 Internal Hackathon - Cleared", issuer: "Innovage Tech, IITM Janakpuri · Sep 2026" },
     { title: "Gen AI & Agentic AI Certification", issuer: "Certification programme" },
     { title: "C/C++ CodeSmart Bootcamp", issuer: "CodeSmart" },
     { title: "Be10x AI Productivity Workshop", issuer: "Be10x" },
